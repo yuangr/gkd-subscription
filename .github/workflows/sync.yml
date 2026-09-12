@@ -1,0 +1,44 @@
+name: Sync Upstream & Build Rules
+
+on:
+  schedule:
+    # 每天北京时间 04:00 (UTC 20:00) 自动同步，在 667 每天 03:00 发布后执行
+    - cron: '0 20 * * *'
+  workflow_dispatch: # 支持手动一键触发
+  push:
+    branches:
+      - main
+    paths:
+      - 'custom/**'
+      - 'scripts/**'
+      - '.github/workflows/**'
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Build Merged Rules
+        run: node scripts/build.mjs
+
+      - name: Commit & Push changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          if [ -n "$(git status --porcelain)" ]; then
+            git add dist/ version.json
+            git commit -m "chore: sync upstream 667 & build dist [skip ci]"
+            git push origin main
+          else
+            echo "没有规则变动，无需提交。"
+          fi

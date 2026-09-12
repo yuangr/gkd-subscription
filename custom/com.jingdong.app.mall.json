@@ -1,0 +1,34 @@
+{
+  "id": "com.jingdong.app.mall",
+  "name": "京东",
+  "groups": [
+    {
+      "key": 0,
+      "name": "开屏广告",
+      "desc": "跳过开屏倒计时广告（增强版：使用物理坐标点击 clickCenter 穿透不可点击节点并兼容高分屏）",
+      "matchTime": 10000,
+      "actionMaximum": 2,
+      "resetMatch": "app",
+      "actionCd": 500,
+      "order": -20,
+      "rules": [
+        {
+          "key": 0,
+          "name": "点击跳过-坐标点击",
+          "action": "clickCenter",
+          "anyMatches": [
+            "@[clickable=true] > [text*=\"跳过\"]",
+            "[desc*=\"跳过\"][clickable=true]",
+            "[text*=\"跳过\"][clickable=true]",
+            "[vid=\"b22\"]",
+            "[text*=\"跳过\"][text.length<10]",
+            "[desc*=\"跳过\"][desc.length<10]"
+          ],
+          "excludeActivityIds": [
+            "com.jd.lib.search.view.Activity.SearchActivity"
+          ]
+        }
+      ]
+    }
+  ]
+}
