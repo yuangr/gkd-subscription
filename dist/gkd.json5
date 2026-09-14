@@ -1,7 +1,7 @@
 {
   "id": 6670,
   "name": "id667+定制增强版 (yuangr)",
-  "version": 58601,
+  "version": 58701,
   "author": "yuangr",
   "checkUpdateUrl": "./gkd.version.json5",
   "supportUri": "https://github.com/yuangr/gkd-subscription",
@@ -29195,6 +29195,58 @@
               "fastQuery": true,
               "matches": "@ImageView[childCount=0][text=null][desc=null][id=null][visibleToUser=true][width<90 && height<90] < FrameLayout[childCount=1][text=null][desc=null][id=null][parent.childCount>3] +n FrameLayout >(1,2) [text^=\"立即\" || text=\"查看详情\" || text=\"了解更多\" || text=\"去微信看看\" || text$=\"第三方应用\" || text=\"进入小程序\" || text=\"领取优惠\" || text=\"跳转微信\" || text=\"下载应用\" || text=\"打开快应用\"]",
               "snapshotUrls": "https://i.gkd.li/i/13213661"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "com.dasjkjfd.mgd",
+      "name": "橘汁",
+      "groups": [
+        {
+          "key": 1,
+          "name": "局部广告",
+          "fastQuery": true,
+          "activityIds": [
+            "com.hive.MainTabActivity",
+            "com.hive.module.search.ActivitySearch"
+          ],
+          "rules": [
+            {
+              "key": 0,
+              "name": "卡片Ad",
+              "matches": "@ImageView[width<66 && height<66][vid=null][desc=null][visibleToUser=true][index=parent.childCount.minus(1)] < FrameLayout[childCount=1] - LinearLayout > ImageView + [text^=\"下载\" || text^=\"了解\"]",
+              "snapshotUrls": [
+                "https://i.gkd.li/i/32193798",
+                "https://i.gkd.li/i/32194586"
+              ],
+              "exampleUrls": "https://e.gkd.li/e293b105-db09-4940-a4c2-7a3074ff67e0"
+            }
+          ]
+        },
+        {
+          "key": 2,
+          "name": "全屏广告",
+          "fastQuery": true,
+          "activityIds": [
+            "com.hive.MainTabActivity",
+            "com.hive.module.player.PlayDetailActvity"
+          ],
+          "rules": [
+            {
+              "key": 0,
+              "name": "向下找",
+              "matches": "@ImageView[vid=null][text=null][width<88 && height<88] < FrameLayout[childCount=1] - FrameLayout >n  [text$=\"了解更多内容\" || text=\"立即打开\"]",
+              "snapshotUrls": "https://i.gkd.li/i/32193904",
+              "exampleUrls": "https://e.gkd.li/3d8c82b7-49bb-4105-85a9-32b50fa28d36"
+            },
+            {
+              "key": 1,
+              "name": "向上找",
+              "matches": "@ImageView[vid=null][text=null][width<88 && height<88] < FrameLayout[childCount=1] + FrameLayout >n  [text$=\"了解更多内容\" || text=\"立即打开\"]",
+              "snapshotUrls": "https://i.gkd.li/i/32194584",
+              "exampleUrls": "https://e.gkd.li/cc89f931-daf3-41be-bae4-54e471c601ee"
             }
           ]
         }
@@ -63080,6 +63132,23 @@
       "id": "com.qq.reader",
       "name": "QQ阅读",
       "groups": [
+        {
+          "key": 0,
+          "name": "开屏广告",
+          "fastQuery": true,
+          "matchTime": 10000,
+          "actionMaximum": 1,
+          "resetMatch": "app",
+          "activityIds": ".activity.SplashADVActivity",
+          "rules": [
+            {
+              "matches": "@ImageView[width<140 && height<140][visibleToUser=true][vid=null][text=null] < * < ViewGroup +n ViewGroup[index=parent.childCount.minus(1)] >2 [text=\"广告\"]",
+              "snapshotUrls": "https://i.gkd.li/i/32193204",
+              "exampleUrls": "https://e.gkd.li/384711c3-c996-4919-bde6-28355a6e48c3"
+            }
+          ],
+          "order": -10
+        },
         {
           "key": 3,
           "name": "局部广告-右下角悬浮卡片广告",
