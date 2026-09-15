@@ -1,7 +1,7 @@
 {
   "id": 6670,
   "name": "id667+定制增强版 (yuangr)",
-  "version": 58701,
+  "version": 58801,
   "author": "yuangr",
   "checkUpdateUrl": "./gkd.version.json5",
   "supportUri": "https://github.com/yuangr/gkd-subscription",
@@ -16136,9 +16136,10 @@
             },
             {
               "key": 1,
+              "forcedTime": 120000,
               "matches": "@[vid=\"close\" || vid=\"iv_close\"] - [vid=\"up_avatar\" || vid=\"gift_icon\" || vid=\"follow_container\"][visibleToUser=true]",
               "snapshotUrls": [
-                "https://i.gkd.li/i/14782965",
+                "https://i.gkd.li/i/32246446",
                 "https://i.gkd.li/i/18046573",
                 "https://i.gkd.li/i/22990105"
               ]
@@ -48984,11 +48985,12 @@
             },
             {
               "key": 1,
-              "matches": "Button[text=\"立即安装\"] + Button[text=\"稍后再说\"]",
+              "matches": "Button[text=\"立即安装\" || text=\"Install now\"] + Button[text=\"稍后再说\" || text=\"Later\"]",
               "exampleUrls": "https://e.gkd.li/7064a569-fcdd-44e2-b4d1-c55e093f4a02",
               "snapshotUrls": [
                 "https://i.gkd.li/i/15283162",
-                "https://i.gkd.li/i/30352967"
+                "https://i.gkd.li/i/30352967",
+                "https://i.gkd.li/i/32207987"
               ]
             }
           ]
@@ -56794,6 +56796,13 @@
                 "https://i.gkd.li/i/19267032",
                 "https://i.gkd.li/i/25041632"
               ]
+            },
+            {
+              "key": 2,
+              "name": "局部横幅",
+              "activityIds": "com.alipay.mobile.nebulax.xriver.activity.XRiverActivity",
+              "matches": "@[clickable=true][id$=\"iv_close\"] -2 [text*=\"权限\"][text*=\"定位\" || text*=\"位置\"][visibleToUser=true]",
+              "snapshotUrls": "https://i.gkd.li/i/32203447"
             }
           ]
         },
