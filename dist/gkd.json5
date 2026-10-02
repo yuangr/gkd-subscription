@@ -1,7 +1,7 @@
 {
   "id": 6670,
   "name": "id667+定制增强版 (yuangr)",
-  "version": 60001,
+  "version": 60101,
   "author": "yuangr",
   "checkUpdateUrl": "./gkd.version.json5",
   "supportUri": "https://github.com/yuangr/gkd-subscription",
@@ -46140,7 +46140,8 @@
           "priorityTime": 10000,
           "activityIds": [
             ".plugin.appbrand.ui.AppBrandUI",
-            ".plugin.appbrand.launching.AppBrandLaunchProxyUI"
+            ".plugin.appbrand.launching.AppBrandLaunchProxyUI",
+            ".plugin.appbrand.ui.AppBrandPluginUI"
           ],
           "rules": [
             {
@@ -46154,7 +46155,8 @@
                 "https://i.gkd.li/i/12785183",
                 "https://i.gkd.li/i/13306883",
                 "https://i.gkd.li/i/13407275",
-                "https://i.gkd.li/i/15108441"
+                "https://i.gkd.li/i/15108441",
+                "https://i.gkd.li/i/32969391"
               ]
             },
             {
