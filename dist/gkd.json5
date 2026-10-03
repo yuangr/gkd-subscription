@@ -1,7 +1,7 @@
 {
   "id": 6670,
   "name": "id667+定制增强版 (yuangr)",
-  "version": 60101,
+  "version": 60201,
   "author": "yuangr",
   "checkUpdateUrl": "./gkd.version.json5",
   "supportUri": "https://github.com/yuangr/gkd-subscription",
@@ -1593,6 +1593,10 @@
         },
         {
           "id": "com.yingyonghui.market",
+          "enable": false
+        },
+        {
+          "id": "com.bambulab.creator",
           "enable": false
         },
         {
