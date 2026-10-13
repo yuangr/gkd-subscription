@@ -1,7 +1,7 @@
 {
   "id": 6670,
   "name": "id667+定制增强版 (yuangr)",
-  "version": 60801,
+  "version": 60901,
   "author": "yuangr",
   "checkUpdateUrl": "./gkd.version.json5",
   "supportUri": "https://github.com/yuangr/gkd-subscription",
@@ -12360,6 +12360,80 @@
       ]
     },
     {
+      "id": "com.sec.android.app.samsungapps",
+      "name": "(三星)应用商店",
+      "groups": [
+        {
+          "key": 0,
+          "name": "开屏广告",
+          "fastQuery": true,
+          "matchTime": 10000,
+          "actionMaximum": 1,
+          "resetMatch": "app",
+          "priorityTime": 10000,
+          "rules": [
+            {
+              "action": "clickCenter",
+              "matches": "[vid=\"skip\"][visibleToUser=true]",
+              "snapshotUrls": [
+                "https://i.gkd.li/i/14810528",
+                "https://i.gkd.li/i/18329468"
+              ]
+            }
+          ],
+          "order": -10
+        },
+        {
+          "key": 1,
+          "name": "其他-[是否年满18岁]弹窗",
+          "desc": "点击[是]",
+          "rules": [
+            {
+              "fastQuery": true,
+              "activityIds": [
+                ".SearchResultActivity",
+                ".SamsungAppsMainActivity"
+              ],
+              "matches": "[text*=\"年满 18 岁\"] +4 [vid=\"positive\"]",
+              "snapshotUrls": [
+                "https://i.gkd.li/i/14473690",
+                "https://i.gkd.li/i/33385203"
+              ],
+              "exampleUrls": "https://e.gkd.li/1417cf6c-e06d-4565-ab2e-eae6a713f1f1"
+            }
+          ]
+        },
+        {
+          "key": 2,
+          "name": "全屏广告-[大家还下载了]弹窗",
+          "desc": "点击关闭",
+          "rules": [
+            {
+              "fastQuery": true,
+              "activityIds": ".detail.activity.ContentDetailActivity",
+              "matches": "@[desc=\"关闭\"][clickable=true] - [vid=\"tv_detail_related_other_opp_title_layout\"][visibleToUser=true]",
+              "exampleUrls": "https://e.gkd.li/de1b9cc4-c47e-456a-b975-5eefaedb5e42",
+              "snapshotUrls": "https://i.gkd.li/i/18209149"
+            }
+          ]
+        },
+        {
+          "key": 3,
+          "name": "全屏广告-应用推荐广告",
+          "desc": "点击[今天不要再显示]",
+          "rules": [
+            {
+              "fastQuery": true,
+              "activityIds": ".SamsungAppsMainActivity",
+              "matches": "@[clickable=true] > [vid=\"do_not_show_again_area_text\"][visibleToUser=true]",
+              "snapshotUrls": "https://i.gkd.li/i/22320803",
+              "exampleUrls": "https://e.gkd.li/37b29a88-d564-4ef6-9ab3-ff88954c87fc"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "id": "com.android.email",
       "name": "(小米)电子邮件",
       "groups": [
@@ -21613,7 +21687,10 @@
           "name": "局部广告-直播间右下角浮窗",
           "desc": "点击x掉",
           "fastQuery": true,
-          "activityIds": ".live.LivePlayActivity",
+          "activityIds": [
+            ".live.LivePlayActivity",
+            ".detail.ui.DetailActivity"
+          ],
           "rules": [
             {
               "key": 0,
@@ -21628,9 +21705,12 @@
             },
             {
               "key": 1,
-              "name": "打开游戏",
-              "matches": "@[visibleToUser=true] <3 [childCount=5] >5 [text=\"打开游戏\"]",
-              "snapshotUrls": "https://i.gkd.li/i/30297510"
+              "name": "打开游戏/下载",
+              "matches": "@[visibleToUser=true][width<114 && height<114][top=parent.top] <3 [childCount>4] >5 [text=\"打开游戏\" || text=\"下载\"]",
+              "snapshotUrls": [
+                "https://i.gkd.li/i/30297510",
+                "https://i.gkd.li/i/33388572"
+              ]
             },
             {
               "key": 2,
@@ -23503,7 +23583,7 @@
           "rules": [
             {
               "key": 0,
-              "matches": "@[(name$=\"ImageView\" || getChild(0).name$=\"ImageView\") && desc!=\"back_unfold\"][clickable=true][visibleToUser=true][width<102 && height<102] <n [childCount>1] >(2,3) [text*=\"查看\" || text$=\"优惠\" || text^=\"立即\" || text^=\"马上\" || text*=\"参与\" || text*=\"参加\" || text*=\"免费\" || (text*=\"领\" && text*=\"券\") || (text*=\"返\" && text*=\"金币\")][text!=\"查看下载\"][text.length<10]",
+              "matches": "@[(name$=\"ImageView\" || getChild(0).name$=\"ImageView\") && desc!=\"back_unfold\"][clickable=true][visibleToUser=true][width<102 && height<102] <n [childCount>1] >(2,3) [text*=\"查看\" || text$=\"优惠\" || text^=\"立即\" || text^=\"马上\" || text*=\"参与\" || text*=\"参加\" || text*=\"免费\" || text^=\"领\" || text$=\"金币\"][text!=\"查看下载\"][text.length<10]",
               "snapshotUrls": [
                 "https://i.gkd.li/i/12908734",
                 "https://i.gkd.li/i/18138903",
@@ -54073,74 +54153,6 @@
       ]
     },
     {
-      "id": "com.sec.android.app.samsungapps",
-      "name": "应用商店",
-      "groups": [
-        {
-          "key": 0,
-          "name": "开屏广告",
-          "fastQuery": true,
-          "matchTime": 10000,
-          "actionMaximum": 1,
-          "resetMatch": "app",
-          "priorityTime": 10000,
-          "rules": [
-            {
-              "action": "clickCenter",
-              "matches": "[vid=\"skip\"][visibleToUser=true]",
-              "snapshotUrls": [
-                "https://i.gkd.li/i/14810528",
-                "https://i.gkd.li/i/18329468"
-              ]
-            }
-          ],
-          "order": -10
-        },
-        {
-          "key": 1,
-          "name": "其他-[您是否年满 18 岁？]弹窗",
-          "desc": "点击[是]",
-          "rules": [
-            {
-              "fastQuery": true,
-              "activityIds": ".SearchResultActivity",
-              "matches": "[text=\"您是否年满 18 岁？\"] +4 @[clickable=true] > [text=\"是\"]",
-              "exampleUrls": "https://m.gkd.li/57941037/cee78493-fbe1-46a0-8dcf-a8b1f1f61f19",
-              "snapshotUrls": "https://i.gkd.li/i/14473690"
-            }
-          ]
-        },
-        {
-          "key": 2,
-          "name": "全屏广告-[大家还下载了]弹窗",
-          "desc": "点击关闭",
-          "rules": [
-            {
-              "fastQuery": true,
-              "activityIds": ".detail.activity.ContentDetailActivity",
-              "matches": "@[desc=\"关闭\"][clickable=true] - [vid=\"tv_detail_related_other_opp_title_layout\"][visibleToUser=true]",
-              "exampleUrls": "https://e.gkd.li/de1b9cc4-c47e-456a-b975-5eefaedb5e42",
-              "snapshotUrls": "https://i.gkd.li/i/18209149"
-            }
-          ]
-        },
-        {
-          "key": 3,
-          "name": "全屏广告-应用推荐广告",
-          "desc": "点击[今天不要再显示]",
-          "rules": [
-            {
-              "fastQuery": true,
-              "activityIds": ".SamsungAppsMainActivity",
-              "matches": "@[clickable=true] > [vid=\"do_not_show_again_area_text\"][visibleToUser=true]",
-              "snapshotUrls": "https://i.gkd.li/i/22320803",
-              "exampleUrls": "https://e.gkd.li/37b29a88-d564-4ef6-9ab3-ff88954c87fc"
-            }
-          ]
-        }
-      ]
-    },
-    {
       "id": "zte.com.market",
       "name": "应用中心",
       "groups": [
@@ -55343,7 +55355,7 @@
             {
               "key": 2,
               "activityIds": "com.bytedance.sdk.openadsdk.stub.activity.Stub_Standard_Activity_T",
-              "matches": "@ImageView < * - FrameLayout >(2,3) [text*=\"第三方应用\" || text*=\"扭动手机\" || text*=\"点击\" && text*=\"上滑\" || text*=\"省钱好物\" || text*=\"扭一扭\"]",
+              "matches": "@ImageView < * - FrameLayout >(2,3) [text*=\"第三方应用\" || text*=\"扭动手机\" || text*=\"点击\" || text*=\"上滑\" || text*=\"省钱好物\" || text*=\"扭一扭\"]",
               "snapshotUrls": "https://i.gkd.li/i/25935365",
               "exampleUrls": "https://e.gkd.li/029e1258-ef6c-4474-991b-7925d9e73e9e"
             },
@@ -55357,7 +55369,7 @@
             {
               "key": 4,
               "activityIds": "com.bytedance.sdk.openadsdk.stub.activity.Stub_Standard_Activity_T",
-              "matches": "@ImageView[width<85] < FrameLayout <2 FrameLayout <2 FrameLayout <2 * - FrameLayout > [text*=\"第三方应用\" || text*=\"扭动\" || (text*=\"点击\" && text*=\"上滑\") || text*=\"省钱好物\" || text*=\"扭一扭\"]",
+              "matches": "@ImageView[width<85] < FrameLayout <2 FrameLayout <2 FrameLayout <2 * - FrameLayout > [text*=\"第三方应用\" || text*=\"扭动\" || text*=\"点击\" || text*=\"上滑\" || text*=\"省钱好物\" || text*=\"扭一扭\"]",
               "snapshotUrls": "https://i.gkd.li/i/25989677"
             },
             {
@@ -61241,14 +61253,16 @@
                 ".act.HomeNewActivity",
                 "com.qingxia.common.homework.ui.HomeworkRecord4Activity",
                 "net.liucong.camera.ext.ScanningQrActivity",
-                "com.qingxia.common.book.ui.Collection2Activity"
+                "com.qingxia.common.book.ui.Collection2Activity",
+                "com.qingxia.common.search.ui.Search2Activity"
               ],
               "matches": "[vid=\"ad_close\"][clickable=true]",
               "snapshotUrls": [
                 "https://i.gkd.li/i/17265140",
                 "https://i.gkd.li/i/33297507",
                 "https://i.gkd.li/i/33297555",
-                "https://i.gkd.li/i/33315721"
+                "https://i.gkd.li/i/33315721",
+                "https://i.gkd.li/i/33372920"
               ],
               "exampleUrls": "https://e.gkd.li/b83aa566-8105-4877-abcd-800abfe7634e"
             }
