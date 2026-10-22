@@ -1,7 +1,7 @@
 {
   "id": 6670,
   "name": "id667+定制增强版 (yuangr)",
-  "version": 61401,
+  "version": 61501,
   "author": "yuangr",
   "checkUpdateUrl": "./gkd.version.json5",
   "supportUri": "https://github.com/yuangr/gkd-subscription",
@@ -23850,6 +23850,10 @@
           "name": "权限提示-通知权限",
           "desc": "点击\"取消\"",
           "fastQuery": true,
+          "activityIds": [
+            ".widget.ConfirmDialogBuilder",
+            ".pages.main.MainFragmentActivity"
+          ],
           "rules": [
             {
               "key": 0,
@@ -23857,10 +23861,6 @@
               "matchTime": 10000,
               "actionMaximum": 1,
               "resetMatch": "app",
-              "activityIds": [
-                ".widget.ConfirmDialogBuilder",
-                ".pages.main.MainFragmentActivity"
-              ],
               "matches": [
                 "[text=\"开启推送提醒\"][visibleToUser=true]",
                 "[text=\"取消\"][visibleToUser=true]"
@@ -23879,6 +23879,11 @@
                 "[text=\"取消\"][visibleToUser=true]"
               ],
               "snapshotUrls": "https://i.gkd.li/i/27190449"
+            },
+            {
+              "key": 2,
+              "matches": "TextView[text=\"暂不开启\"] < @[clickable=true] <n View < View < ComposeView < * < * < [id=\"android:id/content\"]",
+              "snapshotUrls": "https://i.gkd.li/i/33832486"
             }
           ]
         },
@@ -36852,7 +36857,7 @@
               "key": 2,
               "activityIds": "com.tencent.upgrade.ui.UpgradeDialogActivity",
               "matches": "[vid=\"upgrade_dialog_close_btn\"]",
-              "snapshotUrls": "https://i.gkd.li/i/13116821"
+              "snapshotUrls": "https://i.gkd.li/i/33833374"
             }
           ]
         },
@@ -41182,6 +41187,41 @@
                 "https://i.gkd.li/i/14502128",
                 "https://i.gkd.li/i/17869485"
               ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "com.sfexpress.knight",
+      "name": "顺丰同城骑士",
+      "groups": [
+        {
+          "key": 1,
+          "name": "功能类-重复[刷新]导航",
+          "desc": "每隔1秒点击[导航-取]上方刷新",
+          "rules": [
+            {
+              "fastQuery": true,
+              "activityIds": ".home.HomeActivity",
+              "matches": "@[vid=\"locationFl\"] + [vid=\"recordFl\"] >2 [text=\"导航-取\"]",
+              "snapshotUrls": "https://i.gkd.li/i/33796598",
+              "exampleUrls": "https://e.gkd.li/abae860f-12d0-4e01-92a4-6331adfd8cba"
+            }
+          ]
+        },
+        {
+          "key": 2,
+          "name": "功能类-自动[刷新]任务列表",
+          "desc": "每隔5秒点击1次[刷新列表]",
+          "rules": [
+            {
+              "fastQuery": true,
+              "actionCd": 5000,
+              "activityIds": ".home.HomeActivity",
+              "matches": "@[vid=\"llRefresh\"][clickable=true] >2 [text=\"刷新列表\"]",
+              "snapshotUrls": "https://i.gkd.li/i/33797305",
+              "exampleUrls": "https://e.gkd.li/b381ce15-5a3d-43b2-9834-76ef62887a35"
             }
           ]
         }
@@ -53224,6 +53264,21 @@
                 "https://i.gkd.li/i/32636972"
               ],
               "exampleUrls": "https://e.gkd.li/5c650324-bf22-4d9f-9fe0-2c0b738040c4"
+            }
+          ]
+        },
+        {
+          "key": 4,
+          "name": "更新提示",
+          "matchTime": 10000,
+          "actionMaximum": 1,
+          "resetMatch": "app",
+          "rules": [
+            {
+              "fastQuery": true,
+              "activityIds": ".MainActivity",
+              "matches": "@ImageView[clickable=true][width<96] - [text*=\"新版本\"]",
+              "snapshotUrls": "https://i.gkd.li/i/33833127"
             }
           ]
         }
