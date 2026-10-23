@@ -1,7 +1,7 @@
 {
   "id": 6670,
   "name": "id667+定制增强版 (yuangr)",
-  "version": 61501,
+  "version": 61601,
   "author": "yuangr",
   "checkUpdateUrl": "./gkd.version.json5",
   "supportUri": "https://github.com/yuangr/gkd-subscription",
@@ -9216,8 +9216,23 @@
           ]
         },
         {
+          "key": 8,
+          "name": "功能类-自动[勾选]同意协议",
+          "desc": "✅已阅读并同意服务协议和隐私政策",
+          "rules": [
+            {
+              "fastQuery": true,
+              "actionMaximum": 1,
+              "activityIds": ".activity.LoginPublicFragmentActivity",
+              "matches": "@CheckBox[checked=false] + [text=\"已阅读并同意服务协议和隐私政策\"]",
+              "snapshotUrls": "https://i.gkd.li/i/33854572",
+              "exampleUrls": "https://e.gkd.li/e38854d8-4cd5-41c0-9396-b2c95ef9a788"
+            }
+          ]
+        },
+        {
           "key": 10,
-          "name": "功能类-自动勾选原图",
+          "name": "功能类-自动[勾选]原图",
           "desc": "发送图片时自动勾选原图，可手动取消勾选",
           "actionMaximum": 1,
           "rules": [
@@ -12451,12 +12466,14 @@
               "fastQuery": true,
               "activityIds": [
                 ".SearchResultActivity",
-                ".SamsungAppsMainActivity"
+                ".SamsungAppsMainActivity",
+                ".updatelist.UpdateListActivity"
               ],
               "matches": "[text*=\"年满 18 岁\"] +4 [vid=\"positive\"]",
               "snapshotUrls": [
                 "https://i.gkd.li/i/14473690",
-                "https://i.gkd.li/i/33385203"
+                "https://i.gkd.li/i/33385203",
+                "https://i.gkd.li/i/33868896"
               ],
               "exampleUrls": "https://e.gkd.li/1417cf6c-e06d-4565-ab2e-eae6a713f1f1"
             }
@@ -19863,6 +19880,20 @@
               "matches": "[text*=\"有新商户\"] +n @[clickable=true] > [text=\"忽略\"]",
               "snapshotUrls": "https://i.gkd.li/i/33427414",
               "exampleUrls": "https://e.gkd.li/fbbd9498-9140-40fe-a772-ba4613bfa9a4"
+            }
+          ]
+        },
+        {
+          "key": 3,
+          "name": "其他-开启自动接单?",
+          "desc": "点击[忽略]",
+          "rules": [
+            {
+              "fastQuery": true,
+              "activityIds": ".v2.main.EDMainActivity",
+              "matches": "[text*=\"开启\"][text*=\"自动接单\"] +n @[clickable=true] > [text=\"忽略\"]",
+              "snapshotUrls": "https://i.gkd.li/i/33851087",
+              "exampleUrls": "https://e.gkd.li/f3a0d6e2-8b2e-4b68-847d-6f6a6692ae08"
             }
           ]
         }
@@ -30949,6 +30980,7 @@
             {
               "key": 0,
               "fastQuery": true,
+              "action": "clickCenter",
               "matches": "[text*=\"跳过\"][text.length<10][width<500 && height<300][visibleToUser=true]",
               "exampleUrls": "https://e.gkd.li/94c7fc27-891f-4206-b933-f26661041b99",
               "snapshotUrls": "https://i.gkd.li/i/21451911"
@@ -31520,6 +31552,26 @@
               "matches": "[vid=\"append_element_view_remove_ad_ll\"][visibleToUser=true]",
               "exampleUrls": "https://e.gkd.li/3a89486e-83c4-4032-bc07-4531921c9d09",
               "snapshotUrls": "https://i.gkd.li/i/21967126"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "com.kuaiduizuoye.scan",
+      "name": "快对AI",
+      "groups": [
+        {
+          "key": 1,
+          "name": "局部广告",
+          "desc": "点击[关闭]",
+          "rules": [
+            {
+              "fastQuery": true,
+              "activityIds": ".activity.manyquestionsearch.activity.PicManySearchActivity",
+              "matches": "[width>700][height<300] >3 [text=\"关闭\"][clickable=true]",
+              "snapshotUrls": "https://i.gkd.li/i/33854308",
+              "exampleUrls": "https://e.gkd.li/e81f7bbd-a5ce-4b57-b09a-185bd9529c9d"
             }
           ]
         }
@@ -41218,6 +41270,7 @@
             {
               "fastQuery": true,
               "actionCd": 5000,
+              "action": "clickCenter",
               "activityIds": ".home.HomeActivity",
               "matches": "@[vid=\"llRefresh\"][clickable=true] >2 [text=\"刷新列表\"]",
               "snapshotUrls": "https://i.gkd.li/i/33797305",
@@ -45507,6 +45560,22 @@
               "matches": "[text=\"直接关闭\"]",
               "exampleUrls": "https://e.gkd.li/1e2b2822-01dd-455f-8991-1b746c61c07c",
               "snapshotUrls": "https://i.gkd.li/i/16357210"
+            }
+          ]
+        },
+        {
+          "key": 17,
+          "name": "其他-分享时[取消勾选]得现金",
+          "desc": "仅点击1次",
+          "rules": [
+            {
+              "fastQuery": true,
+              "actionMaximum": 1,
+              "resetMatch": "match",
+              "activityIds": ".music.biz.rn.activity.MainProcessLayerReactNativeActivity",
+              "matches": "@[clickable=true] > ImageView + [text*=\"勾选后分享到\"]",
+              "snapshotUrls": "https://i.gkd.li/i/33880660",
+              "exampleUrls": "https://e.gkd.li/61178688-ca5c-4d21-96a2-8d8382665433"
             }
           ]
         }
