@@ -1,7 +1,7 @@
 {
   "id": 6670,
   "name": "id667+定制增强版 (yuangr)",
-  "version": 61801,
+  "version": 61901,
   "author": "yuangr",
   "checkUpdateUrl": "./gkd.version.json5",
   "supportUri": "https://github.com/yuangr/gkd-subscription",
@@ -9096,6 +9096,12 @@
                 "https://i.gkd.li/i/29140037"
               ],
               "excludeSnapshotUrls": "https://i.gkd.li/i/29032927"
+            },
+            {
+              "key": 4,
+              "activityIds": ".activity.QPublicFragmentActivity",
+              "matches": "ImageView[width<62] < [visibleToUser=true][desc=\"关闭广告\"]",
+              "snapshotUrls": "https://i.gkd.li/i/33948809"
             }
           ]
         },
@@ -30608,8 +30614,11 @@
               "key": 10,
               "name": "百度广告-1",
               "activityIds": "com.baidu.mobads.sdk.api.MobRewardVideoActivity",
-              "matches": "@ImageView[clickable=true] - RelativeLayout >2 [text=\"反馈\"]",
-              "snapshotUrls": "https://i.gkd.li/i/25189723"
+              "matches": "@ImageView[clickable=true][width<134 && height<134] <n RelativeLayout >(1,3) [text=\"反馈\"]",
+              "snapshotUrls": [
+                "https://i.gkd.li/i/25189723",
+                "https://i.gkd.li/i/33947096"
+              ]
             },
             {
               "key": 11,
@@ -32063,12 +32072,13 @@
               "activityIds": "com.yxcorp.gifshow.HomeActivity",
               "anyMatches": [
                 "[vid=\"ad_detail_content_layout\"][visibleToUser=true]",
-                "[vid=\"plc_tv_tag_label\"][text$=\"元\"][visibleToUser=true]",
+                "[vid=\"plc_tv_tag_label\"][text$=\"元\" || text$=\"人买过\"][visibleToUser=true]",
                 "[vid=\"plc_tv_biz_text\"][text=\"游戏\" || text=\"小游戏\" || text=\"购物\" || text=\"购买\" || text=\"汽车\" || text=\"咨询\" || text=\"应用\" || text=\"品牌活动\" || text=\"一键出片\" || text=\"测一测\"][visibleToUser=true]"
               ],
               "snapshotUrls": [
                 "https://i.gkd.li/i/29213590",
                 "https://i.gkd.li/i/33927176",
+                "https://i.gkd.li/i/33969241",
                 "https://i.gkd.li/i/29029850",
                 "https://i.gkd.li/i/29029852",
                 "https://i.gkd.li/i/32701451",
@@ -46641,6 +46651,20 @@
           ]
         },
         {
+          "key": 6,
+          "name": "功能类-自动[关闭]已抢完的红包",
+          "desc": "点击x掉",
+          "rules": [
+            {
+              "fastQuery": true,
+              "activityIds": ".plugin.luckymoney.ui.LuckyMoneyNewReceiveUI",
+              "matches": "@[desc=\"关闭\"] - [visibleToUser=true] >3 [text^=\"手慢了\"][text*=\"红包\"][text.length<15]",
+              "snapshotUrls": "https://i.gkd.li/i/33950144",
+              "exampleUrls": "https://e.gkd.li/4786186b-49ab-44e5-b3b1-c3b78db4802b"
+            }
+          ]
+        },
+        {
           "key": 7,
           "name": "功能类-自动[选中]发送原图",
           "desc": "自动选中底部中间的发送原图，可手动取消勾选",
@@ -52725,6 +52749,23 @@
           ]
         },
         {
+          "key": 9,
+          "name": "通知提示-剪贴板内容已更新",
+          "desc": "点击[知道了]",
+          "rules": [
+            {
+              "fastQuery": true,
+              "activityIds": ".notify.ui.NoticeBodyActivity",
+              "matches": [
+                "[text*=\"剪贴板内容已更新\"][visibleToUser=true]",
+                "[text=\"知道了\"][clickable=true]"
+              ],
+              "snapshotUrls": "https://i.gkd.li/i/33947533",
+              "exampleUrls": "https://e.gkd.li/c5a068c5-33ee-4911-a1a8-238b73097f53"
+            }
+          ]
+        },
+        {
           "key": 10,
           "name": "权限提示-通知权限",
           "desc": "点击关闭",
@@ -52763,6 +52804,22 @@
               "matches": "[childCount=0] < [childCount=1] < @View[clickable=true][childCount=1] < WebView[text=\"签到\"][childCount=1] < WebView[childCount=1] <2 [vid=\"web_view_fragment_refresh_layout\"]",
               "snapshotUrls": "https://i.gkd.li/i/26644134",
               "exampleUrls": "https://e.gkd.li/efd48fc1-7575-43ea-a371-585fae266947"
+            }
+          ]
+        },
+        {
+          "key": 13,
+          "name": "功能类-签到成功后自动[返回]",
+          "desc": "按[返回键]",
+          "rules": [
+            {
+              "fastQuery": true,
+              "action": "back",
+              "actionDelay": 300,
+              "activityIds": ".webapp.ui.WebAppViewerActivity",
+              "matches": "@[text=\"签到成功\"] <2 WebView < WebView <2 [vid=\"web_view_fragment_refresh_layout\"]",
+              "snapshotUrls": "https://i.gkd.li/i/33947532",
+              "exampleUrls": "https://e.gkd.li/3705832f-59e5-44f2-b39a-cf4878be6f4f"
             }
           ]
         }
@@ -65335,6 +65392,32 @@
               "matches": "[text=\"以后再说\"] < @View[clickable=true] -2 [text^=\"认证标识很\"][visibleToUser=true] <3 View[childCount=6] <<2 [vid=\"profile_upsell_compose\"]",
               "snapshotUrls": "https://i.gkd.li/i/29405012",
               "exampleUrls": "https://e.gkd.li/6196a859-31ce-4d04-9f53-b9346bee25d6"
+            }
+          ]
+        },
+        {
+          "key": 15,
+          "name": "分段广告-帖子含视频广告",
+          "desc": "①点击[跳过] ②点击[屏蔽]该用户",
+          "fastQuery": true,
+          "activityIds": "com.x.android.main.MainActivity",
+          "rules": [
+            {
+              "key": 1,
+              "name": "①点击[跳过]",
+              "matches": "[text=\"跳过\"] < @[clickable=true] -n [text*=\"广告\"] <n [visibleToUser=true] <2 [childCount=2] >4 [vid=\"exo_subtitles\"]",
+              "snapshotUrls": "https://i.gkd.li/i/33950650",
+              "exampleUrls": "https://e.gkd.li/a9dbde18-fc31-4b28-b277-8ad19d0d3fcf"
+            },
+            {
+              "key": 2,
+              "preKeys": [
+                1
+              ],
+              "name": "②点击[屏蔽]该用户",
+              "matches": "@[text*=\"屏蔽\"] < [clickable=true] <n ScrollView >2 [visibleToUser=true][text*=\"广告\"]",
+              "snapshotUrls": "https://i.gkd.li/i/33951005",
+              "exampleUrls": "https://e.gkd.li/5a072c9d-f214-49c0-9446-cc5b185c3664"
             }
           ]
         }
