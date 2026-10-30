@@ -1,7 +1,7 @@
 {
   "id": 6670,
   "name": "id667+定制增强版 (yuangr)",
-  "version": 62101,
+  "version": 62201,
   "author": "yuangr",
   "checkUpdateUrl": "./gkd.version.json5",
   "supportUri": "https://github.com/yuangr/gkd-subscription",
@@ -7260,12 +7260,13 @@
         {
           "key": 0,
           "name": "全屏广告-弹窗广告",
+          "fastQuery": true,
           "matchTime": 10000,
           "actionMaximum": 1,
           "resetMatch": "app",
           "rules": [
             {
-              "fastQuery": true,
+              "key": 0,
               "activityIds": [
                 "com.huawei.openalliance.ad.ppskit.activity.InnerPPSInterstitialAdActivity",
                 "com.huawei.openalliance.ad.ppskit.activity.InterstitialAdActivity"
@@ -7276,6 +7277,12 @@
                 "https://i.gkd.li/i/24675884",
                 "https://i.gkd.li/i/24979139"
               ]
+            },
+            {
+              "key": 1,
+              "activityIds": "com.huawei.hms.runtimekit.stub.",
+              "matches": "[id=\"com.huawei.hms.game:id/close_image\"]",
+              "snapshotUrls": "https://i.gkd.li/i/34187296"
             }
           ]
         }
@@ -24088,8 +24095,11 @@
             {
               "key": 1,
               "activityIds": ".pages.main.MainFragmentActivity",
-              "matches": "@ImageView[desc=\"Close Button\"] <2 View < View < View < View < ComposeView < [id=\"android:id/content\"]",
-              "snapshotUrls": "https://i.gkd.li/i/28907537"
+              "matches": "@ImageView[desc=\"Close Button\"][clickable=true][visibleToUser=true] <2 View < View < View < View < * < [id=\"android:id/content\"]",
+              "snapshotUrls": [
+                "https://i.gkd.li/i/28907537",
+                "https://i.gkd.li/i/34167774"
+              ]
             },
             {
               "key": 2,
@@ -24111,8 +24121,14 @@
               "key": 0,
               "name": "电商惊喜券",
               "activityIds": ".pages.main.MainFragmentActivity",
-              "matches": "@LynxFlattenUI[id=null][text=\"\"][clickable=true] - [text=\"去逛商城\"] -4 [text$=\"电商惊喜券\"]",
-              "snapshotUrls": "https://i.gkd.li/i/12910159"
+              "anyMatches": [
+                "@LynxFlattenUI[id=null][text=\"\"][clickable=true] - [text=\"去逛商城\"] -4 [text$=\"电商惊喜券\"]",
+                "@ImageView[desc=\"dialog_close_icon\"][clickable=true][visibleToUser=true] <n View[getChild(1).text=\"惊喜电商券即将失效\"] < ComposeView < FrameLayout < [id=\"android:id/content\"]"
+              ],
+              "snapshotUrls": [
+                "https://i.gkd.li/i/12910159",
+                "https://i.gkd.li/i/34167848"
+              ]
             },
             {
               "key": 1,
@@ -24170,6 +24186,12 @@
               "matches": "View[id=null][text=null][desc=null][childCount=0] < [id=\"com.dragon.read.awemevideo:id/fullvideo_videoview\"][childCount=1][visibleToUser=true]",
               "exampleUrls": "https://e.gkd.li/c29c5647-e2ee-460f-87aa-8717779645ec",
               "snapshotUrls": "https://i.gkd.li/i/23621776"
+            },
+            {
+              "key": 8,
+              "activityIds": ".pages.main.MainFragmentActivity",
+              "matches": "TextureView < FrameLayout + FrameLayout > TextView[text=\"关闭\"][clickable=true][visibleToUser=true]",
+              "snapshotUrls": "https://i.gkd.li/i/34167893"
             }
           ]
         },
@@ -24254,14 +24276,17 @@
               "actionCd": 3500,
               "actionDelay": 200,
               "matches": "[text=\"反馈\" || desc=\"反馈\"][visibleToUser=true][name$=\"UIText\" || name$=\"ViewGroup\"]",
-              "exampleUrls": [
-                "https://e.gkd.li/3837a70f-30e3-42d1-9354-696dcda598b7"
-              ],
               "snapshotUrls": [
                 "https://i.gkd.li/i/13520160",
                 "https://i.gkd.li/i/13816453",
                 "https://i.gkd.li/i/24128141"
-              ]
+              ],
+              "exampleUrls": "https://e.gkd.li/3837a70f-30e3-42d1-9354-696dcda598b7"
+            },
+            {
+              "key": 5,
+              "matches": "@ImageView[visibleToUser=true][width<100][right>parent.right.minus(100)] <n [vid=\"root_view\"] >2 [text=\"播放全集\"][focusable=true]",
+              "snapshotUrls": "https://i.gkd.li/i/34167862"
             },
             {
               "key": 50,
@@ -24270,12 +24295,13 @@
                 1,
                 2,
                 3,
-                4
+                4,
+                5
               ],
               "name": "②点击[不感兴趣/关闭此广告]",
               "anyMatches": [
-                "@[clickable=true] > [text=\"不感兴趣\" || text^=\"关闭此\"]",
-                "[text=\"不感兴趣\" || text^=\"关闭此\"][clickable=true]"
+                "@[clickable=true] > [text=\"不感兴趣\" || text^=\"关闭此\" || text=\"关闭本次展示\"]",
+                "[text=\"不感兴趣\" || text^=\"关闭此\" || text=\"关闭本次展示\"][clickable=true]"
               ],
               "snapshotUrls": [
                 "https://i.gkd.li/i/13816454",
@@ -24283,7 +24309,8 @@
                 "https://i.gkd.li/i/24128392",
                 "https://i.gkd.li/i/24189605",
                 "https://i.gkd.li/i/14540281",
-                "https://i.gkd.li/i/32435735"
+                "https://i.gkd.li/i/32435735",
+                "https://i.gkd.li/i/34167884"
               ],
               "exampleUrls": "https://e.gkd.li/e04bcb90-ad61-43d9-97e9-b4f6e3873320"
             }
@@ -32079,15 +32106,33 @@
       "groups": [
         {
           "key": 1,
-          "name": "局部广告",
-          "desc": "点击[关闭]",
+          "name": "分段广告",
+          "desc": "①点击[关闭] ②点击[知道了]",
+          "fastQuery": true,
+          "activityIds": [
+            ".activity.manyquestionsearch.activity.PicManySearchActivity",
+            ".picturesearch.pages.whole.PicManySearchNewV3Activity"
+          ],
           "rules": [
             {
-              "fastQuery": true,
-              "activityIds": ".activity.manyquestionsearch.activity.PicManySearchActivity",
+              "key": 1,
+              "name": "①点击[关闭]",
               "matches": "[width>700][height<300] >3 [text=\"关闭\"][clickable=true]",
-              "snapshotUrls": "https://i.gkd.li/i/33854308",
+              "snapshotUrls": [
+                "https://i.gkd.li/i/33854308",
+                "https://i.gkd.li/i/34192315"
+              ],
               "exampleUrls": "https://e.gkd.li/e81f7bbd-a5ce-4b57-b09a-185bd9529c9d"
+            },
+            {
+              "key": 20,
+              "preKeys": [
+                1
+              ],
+              "name": "②点击[知道了]",
+              "matches": "[text=\"知道了\"][clickable=true]",
+              "snapshotUrls": "https://i.gkd.li/i/34192316",
+              "exampleUrls": "https://e.gkd.li/fc3499a7-a8a7-4b7d-9f47-71814bf7e811"
             }
           ]
         }
@@ -42603,7 +42648,8 @@
                 "com.taobao.tao.TBMainActivity",
                 "com.taobao.android.tbabilitykit.pop.StdPopContainerActivity",
                 "com.taobao.android.detail.wrapper.activity.DetailActivity",
-                "com.alibaba.android.ultron.vfw.weex2.highPerformance.widget.UltronTradeHybridActivity"
+                "com.alibaba.android.ultron.vfw.weex2.highPerformance.widget.UltronTradeHybridActivity",
+                "com.taobao.message.activity.ChatActivity"
               ],
               "matches": "@[desc=\"关闭按钮\"] - [vid=\"poplayer_native_state_id\"]",
               "snapshotUrls": [
@@ -42611,7 +42657,8 @@
                 "https://i.gkd.li/i/12648746",
                 "https://i.gkd.li/i/14060521",
                 "https://i.gkd.li/i/14905372",
-                "https://i.gkd.li/i/30856922"
+                "https://i.gkd.li/i/30856922",
+                "https://i.gkd.li/i/34168285"
               ]
             },
             {
@@ -45827,7 +45874,7 @@
         },
         {
           "key": 8,
-          "name": "局部广告-卡片广告",
+          "name": "局部广告",
           "desc": "点击关闭",
           "fastQuery": true,
           "rules": [
@@ -45837,7 +45884,7 @@
                 ".activity.MainActivity",
                 ".activity.DictQueryActivity"
               ],
-              "matches": "[vid=\"aivClose\" || vid=\"course_one_course_close\" || vid=\"home_ad_close\" || vid=\"course_four_course_close\" || vid=\"promotion_close_zone\"][visibleToUser=true]",
+              "matches": "[vid=\"aivClose\" || vid=\"course_one_course_close\" || vid=\"home_ad_close\" || vid=\"course_four_course_close\" || vid=\"promotion_close_zone\" || vid=\"ivClose\"][visibleToUser=true]",
               "exampleUrls": "https://e.gkd.li/df92c524-c732-4c16-9266-326056c9acf8",
               "snapshotUrls": [
                 "https://i.gkd.li/i/14468564",
@@ -45846,7 +45893,8 @@
                 "https://i.gkd.li/i/14009705",
                 "https://i.gkd.li/i/14559287",
                 "https://i.gkd.li/i/17082441",
-                "https://i.gkd.li/i/17115693"
+                "https://i.gkd.li/i/17115693",
+                "https://i.gkd.li/i/34186897"
               ],
               "excludeSnapshotUrls": "https://i.gkd.li/i/14468628"
             }
@@ -49307,6 +49355,11 @@
                 "https://i.gkd.li/i/13363079",
                 "https://i.gkd.li/i/28334762"
               ]
+            },
+            {
+              "key": 2,
+              "matches": "@ImageView[clickable=true][width<115] + [text*=\"应用\"][text*=\"隐私协议\"][text.length>10]",
+              "snapshotUrls": "https://i.gkd.li/i/34166241"
             },
             {
               "key": 3,
@@ -58227,6 +58280,7 @@
             {
               "key": 3,
               "activityIds": "com.alipay.mobile.nebulax.xriver.activity.XRiverActivity",
+              "excludeActivityIds": "com.alipay.mobile.nebulax.xriver.activity.XRiverActivity$",
               "matches": "@Image[width<90] - [text=\"花呗服务升级\"] <<3 Dialog <2 View < View[index=parent.childCount.minus(1)] <n WebView <<4 [id=\"com.alipay.multiplatform.phone.xriver_integration:id/h5_pc_container\"]",
               "snapshotUrls": "https://i.gkd.li/i/25000603"
             }
@@ -58378,6 +58432,7 @@
               "key": 1,
               "fastQuery": true,
               "activityIds": "com.alipay.mobile.nebulax.xriver.activity.XRiverActivity",
+              "excludeActivityIds": "com.alipay.mobile.nebulax.xriver.activity.XRiverActivity$",
               "matches": "@Image[width<80 && height<80][visibleToUser=true] < View < View < View < View < WebView[text*=\"半浮层容器\"] < WebView <2 * < * < [id=\"android:id/content\"]",
               "snapshotUrls": "https://i.gkd.li/i/27384135"
             },
@@ -58387,6 +58442,7 @@
                 "com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main",
                 "com.alipay.mobile.nebulax.xriver.activity.XRiverActivity"
               ],
+              "excludeActivityIds": "com.alipay.mobile.nebulax.xriver.activity.XRiverActivity$",
               "matches": "[text^=\"去\"][text.length>2] + [text=\"近期不再提醒我\"]",
               "exampleUrls": "https://e.gkd.li/de3df4c8-6ab4-45a0-aec5-0fbdfa75e823",
               "snapshotUrls": [
@@ -58455,6 +58511,7 @@
                 "com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main",
                 "com.alipay.mobile.nebulax.xriver.activity.XRiverActivity"
               ],
+              "excludeActivityIds": "com.alipay.mobile.nebulax.xriver.activity.XRiverActivity$",
               "matches": "@TextView[id=desc][text=\"\"][visibleToUser=true][width<110][height<110][top>getPrev(1).height.div(2)][left<getPrev(1).width.div(2)][right>getPrev(1).width.div(2)] <(2,3) View[childCount>1] <<n [id=\"com.alipay.mobile.nebula:id/h5_pc_container\"]",
               "exampleUrls": "https://e.gkd.li/ebbd606a-0e21-4fc5-b0c3-49e4d87d065c",
               "snapshotUrls": [
@@ -58468,6 +58525,7 @@
             {
               "key": 2,
               "activityIds": "com.alipay.mobile.nebulax.xriver.activity.XRiverActivity",
+              "excludeActivityIds": "com.alipay.mobile.nebulax.xriver.activity.XRiverActivity$",
               "matches": "@[text*=\"跳过\"] + [visibleToUser=true][text^=\"账单分期还\"] <<n [id=\"com.alipay.mobile.nebula:id/h5_pc_container\"]",
               "exampleUrls": "https://e.gkd.li/cc064c84-75a9-4447-b01b-9d5597515093",
               "snapshotUrls": "https://i.gkd.li/i/18409779"
@@ -58475,6 +58533,7 @@
             {
               "key": 3,
               "activityIds": "com.alipay.mobile.nebulax.xriver.activity.XRiverActivity",
+              "excludeActivityIds": "com.alipay.mobile.nebulax.xriver.activity.XRiverActivity$",
               "matches": "Image[visibleToUser=true][text=\"关闭弹屏\"]",
               "snapshotUrls": "https://i.gkd.li/i/22531246"
             },
@@ -58641,6 +58700,7 @@
                 "com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main",
                 "com.alipay.mobile.nebulax.xriver.activity.XRiverActivity"
               ],
+              "excludeActivityIds": "com.alipay.mobile.nebulax.xriver.activity.XRiverActivity$",
               "matches": "WebView[text=\"基金\"] >(2,3) View[childCount=3] > @TextView[clickable=true][visibleToUser=true][text=\"\"] <<n [id=\"com.alipay.mobile.nebula:id/h5_pc_container\"]",
               "exampleUrls": "https://m.gkd.li/57941037/5df9b6fb-7455-492c-a726-fb6a42266a02",
               "snapshotUrls": [
@@ -58653,6 +58713,7 @@
             {
               "key": 1,
               "activityIds": "com.alipay.mobile.nebulax.xriver.activity.XRiverActivity",
+              "excludeActivityIds": "com.alipay.mobile.nebulax.xriver.activity.XRiverActivity$",
               "matches": "View[childCount=3] >4 View[childCount=6] > @TextView[index=2][clickable=true][visibleToUser=true] <<n [id=\"com.alipay.mobile.nebula:id/h5_pc_container\"]",
               "exampleUrls": "https://m.gkd.li/57941037/2d714755-efe9-4c63-8187-7f9b7a5a199c",
               "snapshotUrls": "https://i.gkd.li/i/15144844"
@@ -58661,14 +58722,16 @@
               "key": 2,
               "name": "余额宝广告",
               "activityIds": "com.alipay.mobile.nebulax.xriver.activity.XRiverActivity",
-              "matches": "@TextView[width<50 && height<50] -n [text=\"去看看\"]",
+              "excludeActivityIds": "com.alipay.mobile.nebulax.xriver.activity.XRiverActivity$",
+              "matches": "@TextView[width<50 && height<50] -n [visibleToUser=true][text=\"去看看\"]",
               "snapshotUrls": "https://i.gkd.li/i/23054580"
             },
             {
               "key": 3,
               "name": "余额宝转出-询问转出原因",
               "activityIds": "com.alipay.mobile.nebulax.xriver.activity.XRiverActivity",
-              "matches": "@TextView[text=\"15天内不再询问\"][clickable=true] -n [text$=\"转出原因\"]",
+              "excludeActivityIds": "com.alipay.mobile.nebulax.xriver.activity.XRiverActivity$",
+              "matches": "@TextView[text=\"15天内不再询问\"][clickable=true] -n [visibleToUser=true][text$=\"转出原因\"]",
               "snapshotUrls": "https://i.gkd.li/i/24229300"
             }
           ]
@@ -58747,6 +58810,7 @@
               "actionMaximum": 1,
               "action": "clickCenter",
               "activityIds": "com.alipay.mobile.nebulax.xriver.activity.XRiverActivity",
+              "excludeActivityIds": "com.alipay.mobile.nebulax.xriver.activity.XRiverActivity$",
               "matches": "[text=\"支付宝授权\"] >3 @[childCount=0][text=\"同意\"] <<n [id=\"com.alipay.mobile.nebula:id/h5_pc_container\"]",
               "snapshotUrls": "https://i.gkd.li/i/17376764"
             }
@@ -58757,6 +58821,7 @@
           "name": "局部广告-直播悬浮窗",
           "desc": "点击关闭",
           "activityIds": "com.alipay.mobile.nebulax.xriver.activity.XRiverActivity",
+          "excludeActivityIds": "com.alipay.mobile.nebulax.xriver.activity.XRiverActivity$",
           "rules": [
             {
               "key": 0,
@@ -58788,6 +58853,7 @@
           "rules": [
             {
               "activityIds": "com.alipay.mobile.nebulax.xriver.activity.XRiverActivity",
+              "excludeActivityIds": "com.alipay.mobile.nebulax.xriver.activity.XRiverActivity$",
               "matches": [
                 "[text^=\"该笔为你快速转出\"]",
                 "@CheckBox + [text$=\"不再提示\"]"
@@ -58807,6 +58873,7 @@
           "rules": [
             {
               "activityIds": "com.alipay.mobile.nebulax.xriver.activity.XRiverActivity",
+              "excludeActivityIds": "com.alipay.mobile.nebulax.xriver.activity.XRiverActivity$",
               "matches": "@[text*=\"领取\"] < [childCount=1] <n View <<2 * - * >2 [text=\"我的积分\"]",
               "snapshotUrls": [
                 "https://i.gkd.li/i/22951439",
@@ -64449,13 +64516,17 @@
                 ".activity.AppStarterActivity",
                 ".business.playernew.view.NewPlayerActivity"
               ],
-              "matches": "@ImageView[childCount=0][visibleToUser=true][width<130 && height<130] <<(7,8,9) [id=\"android:id/content\"]",
+              "matches": "@ImageView[id=null][text=null][desc=null][childCount=0][visibleToUser=true][width<130 && height<130] <<(7,8,9) [id=\"android:id/content\"]",
               "snapshotUrls": [
                 "https://i.gkd.li/i/18439138",
                 "https://i.gkd.li/i/22924866",
                 "https://i.gkd.li/i/20745872",
                 "https://i.gkd.li/i/22699223",
                 "https://i.gkd.li/i/30530361"
+              ],
+              "excludeSnapshotUrls": [
+                "https://i.gkd.li/i/34188274",
+                "https://i.gkd.li/i/34188273"
               ],
               "exampleUrls": "https://e.gkd.li/881cddd2-e4ec-472e-8bf8-00f26f61cbc4"
             },
