@@ -1,7 +1,7 @@
 {
   "id": 6670,
   "name": "id667+定制增强版 (yuangr)",
-  "version": 62301,
+  "version": 62401,
   "author": "yuangr",
   "checkUpdateUrl": "./gkd.version.json5",
   "supportUri": "https://github.com/yuangr/gkd-subscription",
@@ -15599,20 +15599,28 @@
           "rules": [
             {
               "key": 0,
-              "activityIds": ".pb.pb.main.PbActivity",
-              "matches": "@ImageView[clickable=true] -2 LinearLayout > [text^=\"打开通知\"]",
-              "snapshotUrls": "https://i.gkd.li/i/13536170"
+              "fastQuery": true,
+              "activityIds": ".tblauncher.MainTabActivity",
+              "matches": "@View[clickable=true] < [childCount=2] -2 [text=\"开启互动消息通知\"]",
+              "snapshotUrls": "https://i.gkd.li/i/34249649",
+              "exampleUrls": "https://e.gkd.li/7fa4aebb-42a7-47f7-bb23-e43fbac7e03b"
             },
             {
               "key": 1,
+              "activityIds": ".pb.pb.main.PbActivity",
+              "matches": "@ImageView[clickable=true] -2 LinearLayout > [visibleToUser=true][text^=\"打开通知\"]",
+              "snapshotUrls": "https://i.gkd.li/i/13536170"
+            },
+            {
+              "key": 2,
               "activityIds": ".immessagecenter.mention.reply.ReplyMeActivity",
               "matches": "TextView[text=\"开启消息推送\"] +2 TextView[text=\"不开启\"]",
               "snapshotUrls": "https://i.gkd.li/i/13675694"
             },
             {
-              "key": 2,
+              "key": 3,
               "activityIds": "com.baidu.tbadk.browser.TBWebContainerActivity",
-              "matches": "[text=\"开启通知\"] <n * > [text=\"暂不开启\"]",
+              "matches": "[text=\"开启通知\"] <n * > [clickable=true][text=\"暂不开启\"]",
               "snapshotUrls": [
                 "https://i.gkd.li/i/13804455",
                 "https://i.gkd.li/i/20918198"
@@ -30476,6 +30484,25 @@
       ]
     },
     {
+      "id": "com.asjdhjhd.mgd.p3",
+      "name": "橘汁",
+      "groups": [
+        {
+          "key": 1,
+          "name": "全屏广告",
+          "rules": [
+            {
+              "fastQuery": true,
+              "activityIds": "com.windmill.sdk.host.stub.StubActivityStandard_TL_Portrait",
+              "matches": "@ImageView[visibleToUser=true][width<78] < [childCount=1] +2 FrameLayout >2 [text=\"立即下载\"]",
+              "snapshotUrls": "https://i.gkd.li/i/34303867",
+              "exampleUrls": "https://e.gkd.li/c080c336-c36e-4001-8fd1-c2ec0ef0a1da"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "id": "com.dasjkjfd.mgd",
       "name": "橘汁",
       "groups": [
@@ -37945,6 +37972,29 @@
               "exampleUrls": "https://e.gkd.li/a1fe7a7d-3863-4e5f-befc-47eae3a505f0"
             }
           ]
+        },
+        {
+          "key": 18,
+          "name": "全屏广告-追更至最新章节弹窗",
+          "desc": "①[取消勾选]提醒 ②x掉弹窗",
+          "fastQuery": true,
+          "actionMaximum": 1,
+          "activityIds": ".ui.activity.QDReaderActivity",
+          "rules": [
+            {
+              "key": 1,
+              "name": "①[取消勾选]提醒",
+              "matches": "[vid=\"switchUpdate\"][checkable=true][checked=true]",
+              "snapshotUrls": "https://i.gkd.li/i/34316607"
+            },
+            {
+              "key": 2,
+              "name": "②x掉弹窗",
+              "matches": "@[vid=\"ivClose\"] +2 [visibleToUser=true] >2 [text=\"追更至最新章节\"]",
+              "snapshotUrls": "https://i.gkd.li/i/34316605",
+              "exampleUrls": "https://e.gkd.li/f969ad39-da92-458f-95f6-e2939857c808"
+            }
+          ]
         }
       ]
     },
@@ -40154,6 +40204,22 @@
               ],
               "exampleUrls": "https://e.gkd.li/12825cd1-cd11-40eb-80e3-45d93c9ad058",
               "snapshotUrls": "https://i.gkd.li/i/21884571"
+            }
+          ]
+        },
+        {
+          "key": 5,
+          "name": "功能类-自动[查看更多]应用更新",
+          "desc": "点击[查看更多]",
+          "rules": [
+            {
+              "fastQuery": true,
+              "actionMaximum": 3,
+              "resetMatch": "app",
+              "activityIds": ".appupdate.UpdateManagerActivity",
+              "matches": "@[clickable=true] > [text=\"查看更多\"]",
+              "snapshotUrls": "https://i.gkd.li/i/34304183",
+              "exampleUrls": "https://e.gkd.li/f7626132-4702-4cd4-b036-88935f45734d"
             }
           ]
         }
