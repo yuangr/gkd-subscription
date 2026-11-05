@@ -1,7 +1,7 @@
 {
   "id": 6670,
   "name": "id667+定制增强版 (yuangr)",
-  "version": 62401,
+  "version": 62501,
   "author": "yuangr",
   "checkUpdateUrl": "./gkd.version.json5",
   "supportUri": "https://github.com/yuangr/gkd-subscription",
@@ -9220,31 +9220,41 @@
         },
         {
           "key": 7,
-          "name": "功能类-登录授权",
-          "desc": "自动点击登录",
+          "name": "功能类-设备登录授权",
+          "desc": "自动点击登录(登录 <设备> QQ)",
+          "matchRoot": true,
+          "actionMaximum": 3,
+          "actionCd": 500,
+          "activityIds": [
+            "com.tencent.biz.qrcode.activity.QRLoginAuthActivity",
+            ".activity.DevlockQuickLoginActivity"
+          ],
           "rules": [
             {
               "key": 1,
+              "name": "快查",
               "fastQuery": true,
-              "matchRoot": true,
-              "actionMaximum": 3,
-              "actionCd": 500,
-              "activityIds": [
-                "com.tencent.biz.qrcode.activity.QRLoginAuthActivity",
-                "com.tencent.open.agent.PublicFragmentActivityForOpenSDK",
-                "com.tencent.open.agent.QuickLoginAuthorityActivity"
+              "matches": "TextView[text^=\"登录 \"][text$=\"QQ\"][visibleToUser=true] +(6-n) LinearLayout > Button[text=\"登录\" || text=\"确认\"][clickable=true]",
+              "snapshotUrls": "https://i.gkd.li/i/20737721",
+              "exampleUrls": "https://e.gkd.li/425a34a7-d32e-4df1-9216-7276d883768a"
+            },
+            {
+              "key": 2,
+              "name": "无快查",
+              "actionMaximumKey": 1,
+              "actionCdKey": 1,
+              "matches": "TextView[text^=\"登录 \"][text$=\"QQ\"][visibleToUser=true] +(6-n) LinearLayout > Button[text=\"登录\" || text=\"确认\"][clickable=true]",
+              "snapshotUrls": "https://i.gkd.li/i/12789287"
+            },
+            {
+              "preKeys": [
+                1,
+                2
               ],
-              "matches": [
-                "[text=\"登录确认\" || text$=\"申请使用\"][visibleToUser=true]",
-                "Button[text=\"登录\" || text=\"同意\" || text=\"确认\"][clickable=true][visibleToUser=true]"
-              ],
-              "snapshotUrls": [
-                "https://i.gkd.li/i/20737721",
-                "https://i.gkd.li/i/20737651",
-                "https://i.gkd.li/i/20737675",
-                "https://i.gkd.li/i/20737673",
-                "https://i.gkd.li/i/22631619"
-              ]
+              "name": "异常二次确认",
+              "matches": "Button[text=\"允许登录QQ\"][clickable=true][visibleToUser=true]",
+              "snapshotUrls": "https://i.gkd.li/i/13063027",
+              "exampleUrls": "https://e.gkd.li/821aeac0-8e87-425d-a660-139c13dc4e50"
             }
           ]
         },
@@ -9680,6 +9690,58 @@
               "activityIds": "com.qzone.reborn.base.QZoneShellActivity",
               "matches": "@ImageView[clickable=true][width<87] <2 [visibleToUser=true] - [childCount=3] >2 [text=\"广告\"]",
               "snapshotUrls": "https://i.gkd.li/i/30869035"
+            }
+          ]
+        },
+        {
+          "key": 40,
+          "name": "功能类-App申请信息/登录授权",
+          "desc": "App申请使用qq登录/用户信息",
+          "matchRoot": true,
+          "actionMaximum": 3,
+          "actionCd": 500,
+          "rules": [
+            {
+              "key": 1,
+              "name": "信息授权",
+              "activityIds": [
+                "com.tencent.open.agent.PublicFragmentActivityForOpenSDK",
+                "com.tencent.open.agent.QuickLoginAuthorityActivity"
+              ],
+              "fastQuery": true,
+              "matches": "@Button[text=\"同意\" || text=\"确认\"][clickable=true] < LinearLayout -(4-n) * >(4-n) [text$=\"申请使用\"][visibleToUser=true]",
+              "snapshotUrls": [
+                "https://i.gkd.li/i/20737673",
+                "https://i.gkd.li/i/22631619"
+              ],
+              "exampleUrls": [
+                "https://e.gkd.li/5d5e24b7-178b-4afb-b2df-2fa55c49575f",
+                "https://e.gkd.li/8a79aed5-3651-40ae-a68c-f17813b03183"
+              ]
+            },
+            {
+              "key": 2,
+              "name": "登录",
+              "activityIds": [
+                "com.tencent.biz.qrcode.activity.QRLoginAuthActivity",
+                ".activity.DevLockQuickVerifyActivity"
+              ],
+              "fastQuery": true,
+              "matches": "TextView[text^=\"登录 \"][visibleToUser=true] +(6-n) LinearLayout > Button[text=\"登录\" || text=\"确认\"][clickable=true]",
+              "snapshotUrls": "https://i.gkd.li/i/20737651",
+              "exampleUrls": "https://e.gkd.li/c1258db1-97f2-4ee5-90ed-50b73669d68d"
+            },
+            {
+              "key": 3,
+              "name": "登录(无快查)",
+              "activityIds": [
+                "com.tencent.biz.qrcode.activity.QRLoginAuthActivity",
+                ".activity.DevLockQuickVerifyActivity"
+              ],
+              "actionMaximumKey": 2,
+              "actionCdKey": 2,
+              "matches": "TextView[text^=\"登录 \"][visibleToUser=true] +(6-n) Button[text=\"登录\" || text=\"确认\"][clickable=true]",
+              "snapshotUrls": "https://i.gkd.li/i/20737675"
             }
           ]
         }
@@ -15915,13 +15977,15 @@
               "key": 2,
               "activityIds": [
                 ".tblauncher.MainTabActivity",
-                "com.baidu.tbadk.browser.TBWebContainerActivity"
+                "com.baidu.tbadk.browser.TBWebContainerActivity",
+                ".forum.ForumActivity"
               ],
               "matches": "WebView[text!=null] > View[childCount=1] > View[childCount=3] > @[visibleToUser=true][index=2][width<150]",
               "exampleUrls": "https://e.gkd.li/ac3d88b7-31a2-441f-a4c8-8a73eaec24b9",
               "snapshotUrls": [
                 "https://i.gkd.li/i/13060891",
-                "https://i.gkd.li/i/16703244"
+                "https://i.gkd.li/i/16703244",
+                "https://i.gkd.li/i/34382812"
               ],
               "excludeSnapshotUrls": "https://i.gkd.li/i/29640529"
             }
@@ -17675,6 +17739,20 @@
               "matches": "[vid=\"design_bottom_sheet\"] >2 [vid=\"title\"][text=\"完善信息，获取精准推荐\"]",
               "snapshotUrls": "https://i.gkd.li/i/31165755",
               "exampleUrls": "https://e.gkd.li/d7565e98-d424-49e1-a137-6b7b46c48cc7"
+            }
+          ]
+        },
+        {
+          "key": 34,
+          "name": "功能类-直播间抽奖弹窗",
+          "desc": "自动关闭直播间抽奖(福袋)结果",
+          "rules": [
+            {
+              "activityIds": "com.bilibili.bililive.room.ui.roomv3.LiveRoomActivityV3",
+              "fastQuery": true,
+              "matches": "[text^=\"中奖名单\"][visibleToUser=true] <(6-n) * <3 * - * -> @Image[desc=null][vid=null][text!=null][width<105 && height<104] <2 View[childCount=2] <<(1n-4) [id=\"app\"] < WebView <<(1n-4) [vid=\"browser\"]",
+              "snapshotUrls": "https://i.gkd.li/i/34363614",
+              "exampleUrls": "https://e.gkd.li/6559f724-c2e9-4f29-b13e-474ff78ead5d"
             }
           ]
         }
@@ -27086,9 +27164,15 @@
           "rules": [
             {
               "fastQuery": true,
-              "activityIds": "com.dragon.read.pages.main.MainFragmentActivity",
+              "activityIds": [
+                "com.dragon.read.pages.main.MainFragmentActivity",
+                "com.dragon.read.component.shortvideo.impl.ShortSeriesActivity"
+              ],
               "matches": "@[clickable=true] > [visibleToUser=true][text=\"暂不开启\"] <<n [vid=\"push_permission_bottom_v2_compose_view\"]",
-              "snapshotUrls": "https://i.gkd.li/i/34212912"
+              "snapshotUrls": [
+                "https://i.gkd.li/i/34212912",
+                "https://i.gkd.li/i/34348017"
+              ]
             }
           ]
         },
@@ -35645,8 +35729,11 @@
           "rules": [
             {
               "key": 0,
-              "matches": "@View[clickable=true][width<150 && height<150] - FrameLayout[childCount=3][getChild(2).name$=\"TextView\"] >7 [text*=\"三方应用\" || text*=\"扭动手机\" || text*=\"上滑\" || text*=\"扭一扭\"][visibleToUser=true]",
-              "snapshotUrls": "https://i.gkd.li/i/34136348"
+              "matches": "@View[clickable=true][width<150 && height<150] - FrameLayout[childCount=3][getChild(2).name$=\"TextView\"] >(n+5) [text*=\"三方应用\" || text*=\"扭动手机\" || text*=\"上滑\" || text*=\"扭一扭\"][visibleToUser=true]",
+              "snapshotUrls": [
+                "https://i.gkd.li/i/34136348",
+                "https://i.gkd.li/i/34367435"
+              ]
             }
           ],
           "order": -10
@@ -53439,12 +53526,18 @@
           "rules": [
             {
               "fastQuery": true,
-              "activityIds": ".notify.ui.NoticeBodyActivity",
+              "activityIds": [
+                ".notify.ui.NoticeBodyActivity",
+                ".webapp.ui.WebAppCommonViewer"
+              ],
               "matches": [
                 "[text*=\"剪贴板内容已更新\"][visibleToUser=true]",
                 "[text=\"知道了\"][clickable=true]"
               ],
-              "snapshotUrls": "https://i.gkd.li/i/33947533",
+              "snapshotUrls": [
+                "https://i.gkd.li/i/33947533",
+                "https://i.gkd.li/i/34332781"
+              ],
               "exampleUrls": "https://e.gkd.li/c5a068c5-33ee-4911-a1a8-238b73097f53"
             }
           ]
@@ -58861,8 +58954,9 @@
               "name": "余额宝广告",
               "activityIds": "com.alipay.mobile.nebulax.xriver.activity.XRiverActivity",
               "excludeActivityIds": "com.alipay.mobile.nebulax.xriver.activity.XRiverActivity$",
-              "matches": "@TextView[width<50 && height<50] -n [visibleToUser=true][text=\"去看看\"]",
-              "snapshotUrls": "https://i.gkd.li/i/23054580"
+              "matches": "[childCount=4] > @TextView[width<50 && height<50] -n [visibleToUser=true][text=\"去看看\"]",
+              "snapshotUrls": "https://i.gkd.li/i/23054580",
+              "excludeSnapshotUrls": "https://i.gkd.li/i/34356908"
             },
             {
               "key": 3,
