@@ -1,7 +1,7 @@
 {
   "id": 6670,
   "name": "id667+定制增强版 (yuangr)",
-  "version": 62801,
+  "version": 62901,
   "author": "yuangr",
   "checkUpdateUrl": "./gkd.version.json5",
   "supportUri": "https://github.com/yuangr/gkd-subscription",
@@ -6887,14 +6887,20 @@
           "matchTime": 5000,
           "actionMaximum": 1,
           "resetMatch": "app",
+          "activityIds": ".MainActivity",
           "rules": [
             {
-              "activityIds": ".MainActivity",
+              "key": 0,
               "matches": "@Button[clickable=true] -4 * > [desc=\"代理\"]",
               "snapshotUrls": [
                 "https://i.gkd.li/i/26210674",
                 "https://i.gkd.li/i/29658034"
               ]
+            },
+            {
+              "key": 1,
+              "matches": "[desc=\"代理\"] + [visibleToUser=true] > [desc=\"延迟测试\"][clickable=true]",
+              "snapshotUrls": "https://i.gkd.li/i/34530552"
             }
           ]
         }
@@ -22199,7 +22205,7 @@
           "rules": [
             {
               "fastQuery": true,
-              "actionCd": 300,
+              "actionCd": 1200,
               "actionDelay": 200,
               "swipeArg": {
                 "start": {
@@ -22240,7 +22246,6 @@
           "rules": [
             {
               "fastQuery": true,
-              "actionCd": 300,
               "actionDelay": 200,
               "swipeArg": {
                 "start": {
@@ -22269,7 +22274,6 @@
           "rules": [
             {
               "fastQuery": true,
-              "actionCd": 300,
               "actionDelay": 200,
               "swipeArg": {
                 "start": {
