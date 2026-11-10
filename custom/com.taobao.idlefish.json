@@ -1,0 +1,41 @@
+{
+  "id": "com.taobao.idlefish",
+  "name": "闲鱼",
+  "groups": [
+    {
+      "key": 0,
+      "name": "开屏广告",
+      "desc": "跳过开屏倒计时广告（增强版：使用物理坐标点击 clickCenter 穿透不可点击节点并兼容高分屏）",
+      "matchTime": 10000,
+      "actionMaximum": 2,
+      "resetMatch": "app",
+      "actionCd": 500,
+      "order": -20,
+      "rules": [
+        {
+          "key": 0,
+          "name": "点击跳过-坐标点击",
+          "action": "clickCenter",
+          "anyMatches": [
+            "@[clickable=true] > [text*=\"跳过\"]",
+            "@[clickable=true] > [desc*=\"跳过\"]",
+            "@[vid*=\"close\"] > [text*=\"跳过\"]",
+            "@[vid*=\"skip\"] > [text*=\"跳过\"]",
+            "[desc*=\"跳过\"][clickable=true]",
+            "[text*=\"跳过\"][clickable=true]",
+            "[text*=\"跳过\"][text.length<10]",
+            "[desc*=\"跳过\"][desc.length<10]",
+            "[vid*=\"skip\"][visibleToUser=true]",
+            "[vid*=\"splash\"] [text*=\"跳过\"]"
+          ],
+          "excludeActivityIds": [
+            ".search_implement.SearchResultActivity",
+            "com.taobao.idlefish.search_implement.SearchResultActivity",
+            ".detail.DetailActivity",
+            "com.taobao.idlefish.detail.DetailActivity"
+          ]
+        }
+      ]
+    }
+  ]
+}

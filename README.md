@@ -31,6 +31,7 @@ https://ghfast.top/https://raw.githubusercontent.com/yuangr/gkd-subscription/mai
 | 应用包名 | 应用名称 | 定制规则组 | 定制改进说明 |
 | :--- | :--- | :--- | :--- |
 | `com.jingdong.app.mall` | 京东 | `key: 0` (开屏广告) | 解决原 667 规则跳过失败问题：<br>1. 注入 `action: "clickCenter"` 物理坐标点击，穿透 `clickable: false` 节点。<br>2. 移除 `< 300` 像素高度限制，完美适配 1.5K / 2K 高分辨率屏。<br>3. 多重父容器与描述文本选择器，0 秒秒跳过开屏倒计时广告。 |
+| `com.taobao.idlefish` | 闲鱼 | `key: 0` (开屏广告) | 解决闲鱼未配置开屏规则导致依赖全局失效问题：<br>1. 注入专属开屏规则，使用 `action: "clickCenter"` 物理坐标点击。<br>2. 支持 `text` 与 `desc` 双属性及倒计时匹配，穿透 Flutter/容器节点。<br>3. 排除搜索与详情页，防止非开屏场景误触。 |
 
 ---
 

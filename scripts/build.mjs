@@ -89,6 +89,8 @@ async function main() {
           console.log(`[已新增规则组] ${appId} -> group key: ${customGroup.key} (${customGroup.name})`);
         }
       }
+      // 保持规则组按 (order 升序, key 升序) 排列，确保开屏广告 (order: -20) 位于首位
+      existingApp.groups.sort((a, b) => (a.order ?? 0) - (b.order ?? 0) || (a.key ?? 0) - (b.key ?? 0));
       mergedCount++;
     } else {
       upstreamData.apps.push(customApp);
