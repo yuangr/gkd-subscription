@@ -1,7 +1,7 @@
 {
   "id": 6670,
   "name": "id667+定制增强版 (yuangr)",
-  "version": 63301,
+  "version": 63302,
   "author": "yuangr",
   "checkUpdateUrl": "./gkd.version.json5",
   "supportUri": "https://github.com/yuangr/gkd-subscription",
@@ -50062,16 +50062,19 @@
         {
           "key": 0,
           "name": "开屏广告",
-          "desc": "跳过开屏倒计时广告（增强版：使用物理坐标点击 clickCenter 穿透不可点击节点并兼容高分屏）",
+          "desc": "跳过开屏倒计时广告（增强版：使用物理坐标点击 clickCenter 穿透不可点击节点并兼容高分屏与扭动/摇一摇开屏）",
+          "enable": true,
+          "fastQuery": true,
+          "forcedTime": 10000,
           "matchTime": 10000,
           "actionMaximum": 2,
           "resetMatch": "app",
-          "actionCd": 500,
+          "actionCd": 300,
           "order": -20,
           "rules": [
             {
               "key": 0,
-              "name": "点击跳过-坐标点击",
+              "name": "点击跳过-常规文字/描述/ID",
               "action": "clickCenter",
               "anyMatches": [
                 "@[clickable=true] > [text*=\"跳过\"]",
@@ -50082,8 +50085,13 @@
                 "[text*=\"跳过\"][clickable=true]",
                 "[text*=\"跳过\"][text.length<10]",
                 "[desc*=\"跳过\"][desc.length<10]",
+                "[text~=\"(?is).*skip.*\"][text.length<10]",
+                "[desc~=\"(?is).*skip.*\"][desc.length<10]",
                 "[vid*=\"skip\"][visibleToUser=true]",
-                "[vid*=\"splash\"] [text*=\"跳过\"]"
+                "[vid*=\"splash\"] [text*=\"跳过\"]",
+                "[id$=\"tt_splash_skip_btn\"]",
+                "[id$=\"ksad_splash_circle_skip_view\"]",
+                "[id$=\"splash_skip_view\"]"
               ],
               "excludeActivityIds": [
                 ".search_implement.SearchResultActivity",
@@ -50091,6 +50099,61 @@
                 ".detail.DetailActivity",
                 "com.taobao.idlefish.detail.DetailActivity"
               ]
+            },
+            {
+              "key": 1,
+              "name": "点击跳过-摇一摇/扭一扭/互动开屏无文字图标",
+              "action": "clickCenter",
+              "anyMatches": [
+                "@View[text=null][clickable=true][childCount=0][visibleToUser=true][width<300&&height<300] +(1,2) TextView[index=parent.childCount.minus(1)][childCount=0] <n FrameLayout[childCount>2][text=null][desc=null] >(n+6) [text*=\"第三方应用\" || text*=\"扭动手机\" || text*=\"点击或上滑\" || text*=\"省钱好物\" || text*=\"扭一扭\"][visibleToUser=true]",
+                "FrameLayout > FrameLayout[childCount>2][text=null][desc=null] > @View[text=null][clickable=true][childCount=0][visibleToUser=true][width<300&&height<300] +(1,2) TextView[index=parent.childCount.minus(1)][childCount=0][visibleToUser=true]",
+                "@[clickable=true][childCount=0][visibleToUser=true][width<300&&height<300] - [text=\"互动广告\"][visibleToUser=true]"
+              ]
+            }
+          ]
+        },
+        {
+          "key": 4,
+          "name": "全屏广告",
+          "desc": "自动关闭进入主页/搜索后的全屏活动营销弹窗与红包浮层",
+          "enable": true,
+          "fastQuery": true,
+          "matchTime": 10000,
+          "actionMaximum": 2,
+          "resetMatch": "app",
+          "order": -10,
+          "rules": [
+            {
+              "key": 0,
+              "activityIds": ".maincontainer.activity.MainActivity",
+              "matches": "WebView[text=\"Rax App\"] > [id=\"root\"] >(3,6) View[index=parent.childCount.minus(1)][clickable=true]",
+              "snapshotUrls": [
+                "https://i.gkd.li/i/14551046",
+                "https://i.gkd.li/i/24981766"
+              ]
+            },
+            {
+              "key": 1,
+              "fastQuery": true,
+              "activityIds": ".search_implement.SearchResultActivity",
+              "matches": "@[index=parent.childCount.minus(1)][clickable=true][width<250][height<250] <n View <<6 m0 <<6 [vid=\"fish_layer_container_id\"]",
+              "snapshotUrls": "https://i.gkd.li/i/23125419"
+            },
+            {
+              "key": 2,
+              "fastQuery": true,
+              "activityIds": "com.idlefish.flutterbridge.flutterboost.boost.FishFlutterBoostActivity",
+              "matches": "@[clickable=true][width<200] <<(4,6) View[id=\"root\"] <<(5,8) [vid=\"fish_layer_container_id\"]",
+              "snapshotUrls": [
+                "https://i.gkd.li/i/23183586",
+                "https://i.gkd.li/i/25796344"
+              ]
+            },
+            {
+              "key": 3,
+              "name": "通用活动弹窗关闭",
+              "action": "clickCenter",
+              "matches": "@[clickable=true][visibleToUser=true][desc*=\"关闭\" || text*=\"关闭\" || desc*=\"跳过\" || text*=\"跳过\"] <<(2,6) [vid=\"fish_layer_container_id\"]"
             }
           ]
         },
@@ -50145,39 +50208,6 @@
               "key": 1,
               "matches": "@ImageView[text=null][desc=null][clickable=true][width>84 && width<124] - View[height<158] <2 [childCount=3] < RelativeLayout - [vid=\"fish_layer_js_native_window_background_view\"]",
               "snapshotUrls": "https://i.gkd.li/i/26053923"
-            }
-          ]
-        },
-        {
-          "key": 4,
-          "name": "全屏广告",
-          "desc": "点击关闭",
-          "rules": [
-            {
-              "key": 0,
-              "activityIds": ".maincontainer.activity.MainActivity",
-              "matches": "WebView[text=\"Rax App\"] > [id=\"root\"] >(3,6) View[index=parent.childCount.minus(1)][clickable=true]",
-              "snapshotUrls": [
-                "https://i.gkd.li/i/14551046",
-                "https://i.gkd.li/i/24981766"
-              ]
-            },
-            {
-              "key": 1,
-              "fastQuery": true,
-              "activityIds": ".search_implement.SearchResultActivity",
-              "matches": "@[index=parent.childCount.minus(1)][clickable=true][width<250][height<250] <n View <<6 m0 <<6 [vid=\"fish_layer_container_id\"]",
-              "snapshotUrls": "https://i.gkd.li/i/23125419"
-            },
-            {
-              "key": 2,
-              "fastQuery": true,
-              "activityIds": "com.idlefish.flutterbridge.flutterboost.boost.FishFlutterBoostActivity",
-              "matches": "@[clickable=true][width<200] <<(4,6) View[id=\"root\"] <<(5,8) [vid=\"fish_layer_container_id\"]",
-              "snapshotUrls": [
-                "https://i.gkd.li/i/23183586",
-                "https://i.gkd.li/i/25796344"
-              ]
             }
           ]
         },
