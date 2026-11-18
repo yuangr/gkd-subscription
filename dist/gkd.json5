@@ -1,7 +1,7 @@
 {
   "id": 6670,
   "name": "id667+定制增强版 (yuangr)",
-  "version": 63601,
+  "version": 63701,
   "author": "yuangr",
   "checkUpdateUrl": "./gkd.version.json5",
   "supportUri": "https://github.com/yuangr/gkd-subscription",
@@ -37125,13 +37125,14 @@
                 ".ui.activity.HomeActivity"
               ],
               "action": "clickCenter",
-              "matches": "@Button[text=\"关闭弹窗\" || desc=\"关闭弹窗\"][clickable=true] <n View[childCount>1] <<(1,2) View[id=\"main\"] <<2 WebView[text=\"拼多多\"] <<3 FrameLayout[vid!=null] <2 ViewGroup <2 FrameLayout <<3 [id=\"android:id/content\"]",
+              "matches": "@Button[text=\"关闭弹窗\" || desc=\"关闭弹窗\"][clickable=true] <n View[childCount>1] <<(1,2) View[id=\"main\"] <<2 WebView[text=\"拼多多\" || text=\"\"] <<3 FrameLayout[vid!=null] <2 ViewGroup <2 FrameLayout <<3 [id=\"android:id/content\"]",
               "snapshotUrls": [
                 "https://i.gkd.li/i/13308175",
                 "https://i.gkd.li/i/13927594",
                 "https://i.gkd.li/i/14434154",
                 "https://i.gkd.li/i/14456017",
-                "https://i.gkd.li/i/23256823"
+                "https://i.gkd.li/i/23256823",
+                "https://i.gkd.li/i/34986289"
               ]
             },
             {
@@ -37307,7 +37308,9 @@
               "fastQuery": true,
               "action": "clickCenter",
               "matches": "[text=\"展开\"][visibleToUser=true]",
-              "snapshotUrls": "https://i.gkd.li/i/29405868"
+              "excludeMatches": "[text=\"轻触照亮\" || text$=\"相册\"][clickable=true][visibleToUser=true]",
+              "snapshotUrls": "https://i.gkd.li/i/29405868",
+              "excludeSnapshotUrls": "https://i.gkd.li/i/34986764"
             },
             {
               "key": 1,
@@ -37488,6 +37491,20 @@
               "matches": "[id=null][text=\"立即加入抽福袋\"][visibleToUser=true]",
               "snapshotUrls": "https://i.gkd.li/i/30295232",
               "exampleUrls": "https://e.gkd.li/a057d535-db79-4faa-9c8f-69069dee91f6"
+            }
+          ]
+        },
+        {
+          "key": 34,
+          "name": "功能类-搜索页-长按词条直接删除",
+          "desc": "你的搜索商品历史,长按一个词条-> x掉",
+          "rules": [
+            {
+              "fastQuery": true,
+              "activityIds": ".activity.NewPageActivity",
+              "matches": "[desc^=\"清除\"][clickable=true] - [text=\"最近搜索\"] - [vid=\"icon\"] < RelativeLayout[childCount=3] + ViewGroup > [text=\"\"][clickable=true][visibleToUser=true]",
+              "snapshotUrls": "https://i.gkd.li/i/34990299",
+              "exampleUrls": "https://e.gkd.li/fbb6437e-63fe-4b6e-8685-8ec5b5d32353"
             }
           ]
         }
@@ -47997,8 +48014,8 @@
               "key": 0,
               "fastQuery": true,
               "anyMatches": [
-                "Button[text^=\"查看\"][clickable=true][visibleToUser=true]",
-                "Button[clickable=true][text^=\"查看\"][visibleToUser=true]"
+                "Button[text^=\"查看\"][text!$=\"0K\"][clickable=true][visibleToUser=true]",
+                "Button[clickable=true][text^=\"查看\"][text!$=\"0K\"][visibleToUser=true]"
               ],
               "exampleUrls": "https://m.gkd.li/57941037/6bb9e68a-43f5-4482-96b1-899cc86fef32",
               "snapshotUrls": [
@@ -48006,12 +48023,12 @@
                 "https://i.gkd.li/i/17698956",
                 "https://i.gkd.li/i/19515095",
                 "https://i.gkd.li/i/19645122"
-              ]
+              ],
+              "excludeSnapshotUrls": "https://i.gkd.li/i/34987211"
             },
             {
               "key": 1,
-              "activityIds": ".ui.LauncherUI",
-              "matches": "[text^=\"原图\"][clickable=true][visibleToUser=true]",
+              "matches": "[text^=\"原图\"][text!$=\"0K\"][clickable=true][visibleToUser=true]",
               "snapshotUrls": "https://i.gkd.li/i/25009442"
             }
           ]
@@ -51435,7 +51452,10 @@
           "name": "分段广告-信息流广告",
           "desc": "①长按[赞助/广告]卡片 ②点击[不喜欢]",
           "fastQuery": true,
-          "activityIds": ".index.v2.IndexActivityV2",
+          "activityIds": [
+            ".index.v2.IndexActivityV2",
+            "com.xingin.alioth.search.GlobalSearchHalfScreenActivity"
+          ],
           "rules": [
             {
               "key": 0,
@@ -51447,7 +51467,8 @@
                 "https://i.gkd.li/i/13455503",
                 "https://i.gkd.li/i/13470690",
                 "https://i.gkd.li/i/27015032",
-                "https://i.gkd.li/i/27015306"
+                "https://i.gkd.li/i/27015306",
+                "https://i.gkd.li/i/34992416"
               ],
               "excludeSnapshotUrls": "https://i.gkd.li/i/14392171",
               "exampleUrls": [
