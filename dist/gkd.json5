@@ -1,7 +1,7 @@
 {
   "id": 6670,
   "name": "id667+定制增强版 (yuangr)",
-  "version": 63801,
+  "version": 63901,
   "author": "yuangr",
   "checkUpdateUrl": "./gkd.version.json5",
   "supportUri": "https://github.com/yuangr/gkd-subscription",
@@ -23090,56 +23090,6 @@
           ]
         },
         {
-          "key": 17,
-          "name": "功能类-评论区-自动展开评论",
-          "desc": "只展开一级评论，不点击展示更多",
-          "fastQuery": true,
-          "activityIds": [
-            ".detail.ui.DetailActivity",
-            ".com.ss.android.ugc.aweme.main.MainActivity",
-            ".com.bytedance.ies.ugc.aweme.photos.detail.flow.page.FlowPageActivity",
-            ".searcharticle.detail.ArticleDetailActivity",
-            ".search.activity.SearchResultActivity",
-            ".detail.ultra.ui.UltraDetailActivity",
-            ".playlet.videodetail.PlayletVideoPlayActivity"
-          ],
-          "rules": [
-            {
-              "key": 0,
-              "matches": "@[clickable=true] > [text^=\"展开\"][text$=\"回复\"]",
-              "snapshotUrls": "https://i.gkd.li/i/32755488",
-              "excludeSnapshotUrls": "https://i.gkd.li/i/32755811",
-              "exampleUrls": [
-                "https://e.gkd.li/a2be5c9e-afe9-4992-8c83-bbe191d68d76",
-                "https://e.gkd.li/1609405d-5a20-445d-bb2f-5de5a9b1237d"
-              ]
-            }
-          ]
-        },
-        {
-          "key": 18,
-          "name": "功能类-评论区-自动展开评论_全部",
-          "desc": "基于上面追加点击展开更多",
-          "fastQuery": true,
-          "activityIds": [
-            ".detail.ui.DetailActivity",
-            ".com.ss.android.ugc.aweme.main.MainActivity",
-            ".com.bytedance.ies.ugc.aweme.photos.detail.flow.page.FlowPageActivity",
-            ".searcharticle.detail.ArticleDetailActivity",
-            ".search.activity.SearchResultActivity",
-            ".detail.ultra.ui.UltraDetailActivity",
-            ".playlet.videodetail.PlayletVideoPlayActivity"
-          ],
-          "rules": [
-            {
-              "key": 0,
-              "matches": "@[clickable=true] > [text^=\"展开更多\"]",
-              "snapshotUrls": "https://i.gkd.li/i/32755811",
-              "exampleUrls": "https://e.gkd.li/1609405d-5a20-445d-bb2f-5de5a9b1237d"
-            }
-          ]
-        },
-        {
           "key": 19,
           "name": "功能类-自动开启[自动连播]",
           "desc": "仅在刚进抖极时第1个视频生效, ①[长按]视频 ②开启[自动联播]",
@@ -24626,7 +24576,7 @@
           "rules": [
             {
               "key": 0,
-              "matches": "@[(name$=\"ImageView\" || getChild(0).name$=\"ImageView\") && desc!=\"back_unfold\"][clickable=true][visibleToUser=true][width<102 && height<102] <n [childCount>1] >(2,3) [text*=\"查看\" || text$=\"优惠\" || text^=\"立即\" || text^=\"马上\" || text*=\"参与\" || text*=\"参加\" || text*=\"免费\" || text^=\"领\" || text$=\"金币\"][text!=\"查看下载\"][text.length<10]",
+              "matches": "@[(name$=\"ImageView\" || getChild(0).name$=\"ImageView\") && desc!=\"back_unfold\"][clickable=true][visibleToUser=true][width<102 && height<102] <n [childCount>1] >(2,3) [text*=\"查看\" || text$=\"优惠\" || text^=\"立即\" || text^=\"马上\" || text*=\"参与\" || text*=\"参加\" || text*=\"免费\" || text^=\"领\" || text$=\"金币\"][!(text=\"查看下载\" || text=\"立即播放\")][text.length<10]",
               "snapshotUrls": [
                 "https://i.gkd.li/i/12908734",
                 "https://i.gkd.li/i/18138903",
@@ -24643,7 +24593,8 @@
               "excludeSnapshotUrls": [
                 "https://i.gkd.li/i/28821485",
                 "https://i.gkd.li/i/31111672",
-                "https://i.gkd.li/i/32085481"
+                "https://i.gkd.li/i/32085481",
+                "https://i.gkd.li/i/35098348"
               ],
               "exampleUrls": "https://e.gkd.li/3de0d5d9-0c02-4fe7-b5e8-b9fdb6688f8e"
             },
@@ -26873,6 +26824,27 @@
       ]
     },
     {
+      "id": "com.tencent.tmgp.supercell.boombeach",
+      "name": "海岛奇兵",
+      "groups": [
+        {
+          "key": 1,
+          "name": "通知提示-未成年弹窗",
+          "desc": "x掉",
+          "actionMaximum": 1,
+          "resetMatch": "app",
+          "rules": [
+            {
+              "activityIds": "com.supercell.titan.tencent.GameAppTencentMidas",
+              "matches": "@TextView[width<104 && height<104] -n [visibleToUser=true][text*=\"未成年游戏教育\"]",
+              "snapshotUrls": "https://i.gkd.li/i/35075364",
+              "exampleUrls": "https://e.gkd.li/beb30964-2fbf-42a4-a325-8d6a4f209f65"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "id": "com.haier.uhome.uplus",
       "name": "海尔智家",
       "groups": [
@@ -27759,39 +27731,44 @@
         {
           "key": 2,
           "name": "局部广告-直播间悬浮广告",
+          "fastQuery": true,
           "activityIds": ".liveroom.ChannelPage",
           "rules": [
             {
               "key": 0,
-              "fastQuery": true,
-              "matches": "[vid=\"ad_close\"]",
+              "matches": "[vid=\"ad_close\" || vid=\"game_header_close\" || vid=\"iv_vertical_close\"][clickable=true]",
               "snapshotUrls": [
                 "https://i.gkd.li/i/12901045",
-                "https://i.gkd.li/i/12901044"
-              ]
+                "https://i.gkd.li/i/12901044",
+                "https://i.gkd.li/i/13395604",
+                "https://i.gkd.li/i/13395606",
+                "https://i.gkd.li/i/35090738"
+              ],
+              "exampleUrls": "https://e.gkd.li/8a375b99-4905-476c-8ff6-c27f4ef7a613"
             },
             {
               "key": 1,
-              "fastQuery": true,
-              "matches": "[vid=\"game_header_close\"]",
-              "snapshotUrls": [
-                "https://i.gkd.li/i/13395604",
-                "https://i.gkd.li/i/13395606"
-              ]
+              "matches": "@[desc=\"关闭\"] <n ViewGroup +2 FrameLayout >3 [text=\"广告\"]",
+              "snapshotUrls": "https://i.gkd.li/i/35090752",
+              "exampleUrls": "https://e.gkd.li/178268bf-af87-45b2-a41b-707b3bb5461a"
             },
             {
               "key": 2,
-              "fastQuery": true,
               "matches": "[vid=\"popup_banner\"] >2 [vid=\"ui_count_down\"]",
-              "snapshotUrls": [
-                "https://i.gkd.li/i/13417245"
-              ]
+              "snapshotUrls": "https://i.gkd.li/i/13417245"
             },
             {
               "key": 3,
-              "fastQuery": true,
-              "matches": "@ViewGroup[clickable=true][visibleToUser=true] <2 ViewGroup < FrameLayout <2 FrameLayout < [vid=\"miniapp_content_container\"]",
-              "snapshotUrls": "https://i.gkd.li/i/13401266"
+              "activityIds": [
+                ".liveroom.ChannelPage",
+                ".homepage.Homepage"
+              ],
+              "matches": "@[id=null][visibleToUser=true][width<72 && height<72][right>prev.right.minus(20)] <<n [vid=\"miniapp_content_container\"]",
+              "snapshotUrls": [
+                "https://i.gkd.li/i/13401266",
+                "https://i.gkd.li/i/35090761"
+              ],
+              "exampleUrls": "https://e.gkd.li/fdb69898-e142-4bcb-be1c-408d6a9fd392"
             }
           ]
         },
@@ -32615,10 +32592,11 @@
             {
               "key": 1,
               "name": "①点击[关闭]",
-              "matches": "[width>700][height<300] >3 [text=\"关闭\"][clickable=true]",
+              "matches": "[width>700][height<300] >(2,3) [text=\"关闭\"][clickable=true]",
               "snapshotUrls": [
                 "https://i.gkd.li/i/33854308",
-                "https://i.gkd.li/i/34192315"
+                "https://i.gkd.li/i/34192315",
+                "https://i.gkd.li/i/35073276"
               ],
               "exampleUrls": "https://e.gkd.li/e81f7bbd-a5ce-4b57-b09a-185bd9529c9d"
             },
@@ -37074,26 +37052,34 @@
         },
         {
           "key": 10,
-          "name": "全屏广告-多多视频划到广告自动跳过",
-          "desc": "点击返回自动刷新，从而跳过广告",
-          "fastQuery": true,
-          "activityIds": ".ui.activity.HomeActivity",
+          "name": "功能类-[上滑]继续看视频",
+          "desc": "刷视频刷到 广告/直播 时自动[上滑]",
           "rules": [
             {
               "key": 0,
-              "matches": [
-                "TextView[text=\"正在直播\"]",
-                "@ImageView[desc=\"返回\"] <4 ViewGroup < * < * < [id=\"android:id/content\"]"
+              "fastQuery": true,
+              "activityIds": [
+                ".ui.activity.HomeActivity",
+                ".ui.activity.MainFrameActivity"
               ],
-              "snapshotUrls": "https://i.gkd.li/i/13446291"
-            },
-            {
-              "key": 1,
-              "matches": [
-                "TextView[text=\"查看更多低价商品\"]",
-                "@ImageView[desc=\"返回\"] <4 ViewGroup < * < * < [id=\"android:id/content\"]"
+              "swipeArg": {
+                "start": {
+                  "x": "screenWidth/2",
+                  "y": "screenHeight * 0.7"
+                },
+                "end": {
+                  "x": "screenWidth/2",
+                  "y": "screenHeight * 0.3"
+                },
+                "duration": 200
+              },
+              "matches": "[text=\"上滑继续看视频\" || text=\"点击进入直播间\"][visibleToUser=true]",
+              "snapshotUrls": [
+                "https://i.gkd.li/i/13791119",
+                "https://i.gkd.li/i/13446291",
+                "https://i.gkd.li/i/35063484"
               ],
-              "snapshotUrls": "https://i.gkd.li/i/13791119"
+              "exampleUrls": "https://e.gkd.li/136b0844-1d93-4192-95c7-ad42129e86b9"
             }
           ]
         },
@@ -37307,10 +37293,14 @@
               "name": "通用[展开]_fastQ",
               "fastQuery": true,
               "action": "clickCenter",
+              "excludeMatches": "[text$=\"相册\" || text=\"追剧\"][visibleToUser=true]",
               "matches": "[text=\"展开\"][visibleToUser=true]",
-              "excludeMatches": "[text=\"轻触照亮\" || text$=\"相册\"][clickable=true][visibleToUser=true]",
               "snapshotUrls": "https://i.gkd.li/i/29405868",
-              "excludeSnapshotUrls": "https://i.gkd.li/i/34986764"
+              "excludeSnapshotUrls": [
+                "https://i.gkd.li/i/34986764",
+                "https://i.gkd.li/i/35064077",
+                "https://i.gkd.li/i/35064076"
+              ]
             },
             {
               "key": 1,
@@ -37332,7 +37322,7 @@
               "name": "商品评论",
               "fastQuery": true,
               "activityIds": ".activity.NewPageActivity",
-              "matches": "@[desc=\"展开\"][clickable=true] - FrameLayout > ViewGroup[vid=\"pdd\"][childCount>5] >2 [text^=\"全部(\"]",
+              "matches": "@[desc=\"展开\"][clickable=true] - FrameLayout > ViewGroup[childCount>5][vid=\"pdd\"] >2 [text^=\"全部(\"]",
               "snapshotUrls": "https://i.gkd.li/i/29604643"
             }
           ]
