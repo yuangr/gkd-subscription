@@ -1,7 +1,7 @@
 {
   "id": 6670,
   "name": "id667+定制增强版 (yuangr)",
-  "version": 64301,
+  "version": 64401,
   "author": "yuangr",
   "checkUpdateUrl": "./gkd.version.json5",
   "supportUri": "https://github.com/yuangr/gkd-subscription",
@@ -13302,6 +13302,23 @@
               "exampleUrls": "https://e.gkd.li/abecebb8-cfb1-4cd0-b035-eceda488e40e"
             }
           ]
+        },
+        {
+          "key": 20,
+          "name": "功能类-关闭[未验证应用]提示",
+          "desc": "点击[仍然安装]",
+          "fastQuery": true,
+          "activityIds": "com.miui.packageInstaller.NewInstallerPrepareActivity",
+          "rules": [
+            {
+              "matches": [
+                "[text=\"未验证应用提醒\"] + [text^=\"该应用未通过\"]",
+                "[text=\"仍然安装\"]"
+              ],
+              "snapshotUrls": "https://i.gkd.li/i/35331944",
+              "exampleUrls": "https://e.gkd.li/8838fcbd-1967-481b-9a1f-7bf3f8264c74"
+            }
+          ]
         }
       ]
     },
@@ -19526,7 +19543,7 @@
         {
           "key": 0,
           "name": "开屏广告",
-          "desc": "该规则需要在高级设置中开启[启用优化]才能生效",
+          "desc": "⚠️该规则需在工作模式中开启[触摸优化],点击才能生效",
           "matchTime": 10000,
           "actionMaximum": 1,
           "resetMatch": "app",
@@ -25094,6 +25111,50 @@
                 "https://e.gkd.li/e0c12712-4b1e-4b75-a9ec-d1a8042156f6",
                 "https://e.gkd.li/0d2d257a-abda-4255-b971-faf06b565cb7"
               ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "com.dragon.read.oversea.gp",
+      "name": "番茄小说",
+      "groups": [
+        {
+          "key": 1,
+          "name": "权限提示-通知权限",
+          "desc": "点击\"取消\"",
+          "fastQuery": true,
+          "activityIds": [
+            ".widget.ConfirmDialogBuilder",
+            ".pages.main.MainFragmentActivity",
+            "com.dragon.read.pages.main.MainFragmentActivity"
+          ],
+          "rules": [
+            {
+              "key": 0,
+              "name": "首页",
+              "matchTime": 10000,
+              "actionMaximum": 1,
+              "resetMatch": "app",
+              "matches": [
+                "[text=\"开启推送提醒\"][visibleToUser=true]",
+                "[text=\"取消\"][visibleToUser=true]"
+              ]
+            },
+            {
+              "key": 1,
+              "name": "小说阅读页",
+              "activityIds": ".reader.ui.ReaderActivity",
+              "matches": [
+                "[text=\"开启推送通知\"][visibleToUser=true]",
+                "[text=\"取消\"][visibleToUser=true]"
+              ]
+            },
+            {
+              "key": 2,
+              "matches": "TextView[text=\"暂不开启\"] < @[clickable=true] <n View < View < ComposeView < * < * < [id=\"android:id/content\"]",
+              "snapshotUrls": "https://i.gkd.li/i/35333111"
             }
           ]
         }
@@ -43556,6 +43617,13 @@
               "activityIds": "com.taobao.android.tbabilitykit.pop.StdPopContainerActivity",
               "matches": "Image[text*=\".jpg\"][width<150 && height<150] < [visibleToUser=true] < @View[clickable=true][childCount=1] <<n FrameLayout[id=null] - [vid=\"layermanager_penetrate_webview_container_id\"]",
               "snapshotUrls": "https://i.gkd.li/i/30710740"
+            },
+            {
+              "key": 6,
+              "fastQuery": true,
+              "activityIds": "com.taobao.tao.welcome.Welcome",
+              "matches": "@Image[text*=\".jpg\"][width<150][visibleToUser=true] < [childCount=1][height<150] - [height>500] <<n [vid=\"poplayer_inner_view\"]",
+              "snapshotUrls": "https://i.gkd.li/i/35306359"
             }
           ]
         },
