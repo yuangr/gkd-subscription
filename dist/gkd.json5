@@ -1,7 +1,7 @@
 {
   "id": 6670,
   "name": "id667+定制增强版 (yuangr)",
-  "version": 64601,
+  "version": 64701,
   "author": "yuangr",
   "checkUpdateUrl": "./gkd.version.json5",
   "supportUri": "https://github.com/yuangr/gkd-subscription",
@@ -25138,11 +25138,30 @@
         {
           "key": 21,
           "name": "功能类-自动[展开更多]评论",
-          "desc": "小说段评区/短剧评论区, 点击[展开更多/展开n条回复]",
+          "desc": "小说段评区/评分区; 短剧评论区/剧评区, 点击[展开/展开更多/展开n条回复]",
+          "fastQuery": true,
+          "actionCd": 500,
           "rules": [
             {
-              "fastQuery": true,
-              "actionCd": 500,
+              "key": 1,
+              "name": "①[展开]点评",
+              "activityIds": [
+                "com.dragon.community.impl.comment.playlet.list.page.CSSPlayletCommentListActivity",
+                "com.dragon.community.impl.list.page.CSSBookCommentListActivity"
+              ],
+              "matches": "[text$=\"后点评\"] < LinearLayout -2 ViewGroup > [text=\"展开\"][clickable=true]",
+              "snapshotUrls": [
+                "https://i.gkd.li/i/35494357",
+                "https://i.gkd.li/i/35494382"
+              ],
+              "exampleUrls": [
+                "https://e.gkd.li/5ffee787-dca6-4e91-b908-96bf8f896e47",
+                "https://e.gkd.li/f81b3c2e-5b56-4dab-8eac-ba38396ab972"
+              ]
+            },
+            {
+              "key": 2,
+              "name": "②[展开]评论/回复",
               "activityIds": [
                 ".reader.ui.ReaderActivity",
                 ".pages.main.MainFragmentActivity",
@@ -25151,12 +25170,13 @@
               ],
               "matches": [
                 "[id=\"android:id/content\"][height>prev.height.plus(100)] >n [id=\"android:id/content\"][height>500]",
-                "@[clickable=true] > [visibleToUser=true][text^=\"展开\"][text$=\"回复\" || text$=\"更多\"]"
+                "(@[clickable=true] > [visibleToUser=true][text^=\"展开\"][text$=\"回复\" || text$=\"更多\"]) || ([clickable=true][text=\"展开\"])"
               ],
               "snapshotUrls": [
                 "https://i.gkd.li/i/35147917",
                 "https://i.gkd.li/i/35147919",
                 "https://i.gkd.li/i/35173217",
+                "https://i.gkd.li/i/35494237",
                 "https://i.gkd.li/i/35203330",
                 "https://i.gkd.li/i/35203316"
               ],
@@ -25166,8 +25186,44 @@
               ],
               "exampleUrls": [
                 "https://e.gkd.li/e0c12712-4b1e-4b75-a9ec-d1a8042156f6",
-                "https://e.gkd.li/0d2d257a-abda-4255-b971-faf06b565cb7"
+                "https://e.gkd.li/0d2d257a-abda-4255-b971-faf06b565cb7",
+                "https://e.gkd.li/4fc71629-5b01-4c60-a356-0b89c3b7e162"
               ]
+            }
+          ]
+        },
+        {
+          "key": 22,
+          "name": "功能类-自动[展开]简介",
+          "desc": "小说/短剧简介, 点击1次[展开]",
+          "actionMaximum": 1,
+          "resetMatch": "match",
+          "rules": [
+            {
+              "key": 1,
+              "name": "①[展开]短剧简介",
+              "fastQuery": true,
+              "activityIds": [
+                ".reader.ui.ReaderActivity",
+                ".component.shortvideo.impl.ShortSeriesActivity"
+              ],
+              "matches": "[vid=\"title\"][text$=\"简介\"] + ViewGroup > [text=\"展开\"][clickable=true][visibleToUser=true]",
+              "snapshotUrls": [
+                "https://i.gkd.li/i/35494458",
+                "https://i.gkd.li/i/35494462"
+              ],
+              "exampleUrls": [
+                "https://e.gkd.li/20fe96c0-f378-4a0d-8146-7bc089b7c864",
+                "https://e.gkd.li/e4e767e6-5d15-46af-8065-dffdcd42da09"
+              ]
+            },
+            {
+              "key": 2,
+              "name": "②[展开]小说简介",
+              "activityIds": ".reader.detail.BookDetailActivity",
+              "matches": "TextView[text=\"简介\"] +n View[childCount=2] > TextView[clickable=true][text=\"展开\"][visibleToUser=true]",
+              "snapshotUrls": "https://i.gkd.li/i/35494527",
+              "exampleUrls": "https://e.gkd.li/c88a8d15-fb17-44d3-b350-7d73df73e566"
             }
           ]
         }
@@ -30739,6 +30795,22 @@
               "activityIds": "com.jd.lib.ordercenter.confirmreceive.ConfirmReceiveActivity",
               "matches": "@[desc=\"返回\"][clickable=true] + * > [text=\"确认收货成功\"]",
               "snapshotUrls": "https://i.gkd.li/i/25181413"
+            }
+          ]
+        },
+        {
+          "key": 18,
+          "name": "功能类-自动进入[快速验证]",
+          "desc": "一般查看 购物车/订单 时会弹验证, 点击1次[快速验证]",
+          "rules": [
+            {
+              "fastQuery": true,
+              "actionMaximum": 1,
+              "resetMatch": "match",
+              "activityIds": ".bundle.jdrhsdk.JDRiskHandleActivity",
+              "matches": "[text=\"快速验证\"][clickable=true]",
+              "snapshotUrls": "https://i.gkd.li/i/35494504",
+              "exampleUrls": "https://e.gkd.li/a8907154-923b-4957-918f-2323e2fa767a"
             }
           ]
         }
